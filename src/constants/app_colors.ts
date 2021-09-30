@@ -11,4 +11,6 @@ export const AppColors = {
   placeholer: '#A8A8A8',
   warning: '#BA3333',
 
-}
+  hover: '#464646',
+  focus: '#464646',
+};
