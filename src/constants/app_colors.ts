@@ -14,6 +14,7 @@ export const AppColors = {
   warning: '#BA3333',
 
   hover: '#464646',
+  hoverMenuItem: '#5C5C5C',
   focus: '#464646',
 
   buttonBackground: '#464646',

@@ -1,3 +1,13 @@
 import React from 'react';
+import { Navbar } from '../../components/Navbar';
 
-export const SearchData = () => <h1>SearchData page</h1>;
+import { Container } from './styles';
+
+// eslint-disable-next-line arrow-body-style
+export const SearchData = () => {
+  return (
+    <Container>
+      <Navbar />
+    </Container>
+  );
+};

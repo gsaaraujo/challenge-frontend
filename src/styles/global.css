@@ -3,6 +3,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 html,
@@ -10,10 +11,19 @@ body {
   height: 100%;
   overflow-x: hidden;
   font-family: 'Inter';
+  letter-spacing: 0.5px;
 }
 
 p {
   margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
 }
 
 input {

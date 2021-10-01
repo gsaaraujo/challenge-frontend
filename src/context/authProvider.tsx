@@ -10,7 +10,7 @@ type User = {
 type Data = {
   user: User | null;
   // eslint-disable-next-line no-unused-vars
-  handleAuthentication: (name: String) => void;
+  handleAuthentication: (name: string) => void;
 };
 
 type Props = {
@@ -37,10 +37,10 @@ export const AuthProvider = ({ children }: Props) => {
     setIsLoading(false);
   }, [isLoading]);
 
-  const handleAuthentication = (name: String) => {
+  const handleAuthentication = (name: string) => {
     setIsLoading(true);
 
-    localStorage.setItem('Name', JSON.stringify(name));
+    localStorage.setItem('Name', name);
   };
 
   return (

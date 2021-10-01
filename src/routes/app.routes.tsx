@@ -7,11 +7,7 @@ import { SearchData } from '../pages/SearchData';
 
 export const AppRoutes = () => (
   <Switch>
-    <Route path='/'>
-      <RegisterData />
-    </Route>
-    <Route path='/searchData'>
-      <SearchData />
-    </Route>
+    <Route path='/' component={RegisterData} exact />
+    <Route path='/searchData' component={SearchData} />
   </Switch>
 );

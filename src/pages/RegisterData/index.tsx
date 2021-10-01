@@ -1,3 +1,14 @@
 import React from 'react';
 
-export const RegisterData = () => <h1>RegisterData page</h1>;
+import { Container } from './styles';
+
+import { Navbar } from '../../components/Navbar';
+
+// eslint-disable-next-line arrow-body-style
+export const RegisterData = () => {
+  return (
+    <Container>
+      <Navbar />
+    </Container>
+  );
+};
