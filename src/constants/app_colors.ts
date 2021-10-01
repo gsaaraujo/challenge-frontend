@@ -1,8 +1,10 @@
 export const AppColors = {
+  primary: '#464646',
+
   header: '#464646',
   footer: '#464646',
 
-  background: '#FFFFFFF',
+  background: '#FFFFFF',
   inputBackground: '#F1F1F1',
 
   heading100: '#464646',
@@ -13,4 +15,7 @@ export const AppColors = {
 
   hover: '#464646',
   focus: '#464646',
+
+  buttonBackground: '#464646',
+  buttonTitle: '#FFFFFF',
 };

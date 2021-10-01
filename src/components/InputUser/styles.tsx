@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { AppColors } from '../../constants/app_colors';
 
 export const Container = styled.div`
-  width: 44%;
+  width: 100%;
   height: 37px;
   display: flex;
   padding-left: 20px;
@@ -15,6 +15,10 @@ export const Container = styled.div`
   &:hover {
     transition: 0.3s linear;
     border-color: ${AppColors.hover};
+  }
+
+  @media screen and (max-width: 576px) {
+    height: 30px;
   }
 `;
 

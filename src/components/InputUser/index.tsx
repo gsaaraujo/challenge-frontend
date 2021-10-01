@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/require-default-props */
 import React, { useState } from 'react';
 
 import userIcon from '../../assets/icons/user.svg';
@@ -7,11 +9,11 @@ import eyeOffIcon from '../../assets/icons/eye-off.svg';
 import { Container, ActionIcon } from './styles';
 
 type Props = {
-  // eslint-disable-next-line react/require-default-props
   isPassword?: boolean;
+  handleOnChange: (title: string) => void;
 };
 
-export const InputUser = ({ isPassword = false }: Props) => {
+export const InputUser = ({ isPassword = false, handleOnChange }: Props) => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(isPassword);
 
   const handleIsPasswordVisible = () =>
@@ -19,7 +21,11 @@ export const InputUser = ({ isPassword = false }: Props) => {
 
   return (
     <Container>
-      <input type={isPasswordVisible ? 'password' : 'text'} maxLength={30} />
+      <input
+        type={isPasswordVisible ? 'password' : 'text'}
+        maxLength={30}
+        onChange={title => handleOnChange(title.target.value)}
+      />
 
       {isPassword ? (
         <ActionIcon onClick={handleIsPasswordVisible}>

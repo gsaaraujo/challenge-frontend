@@ -23,3 +23,13 @@ input {
   border: none;
   outline: none;
 }
+
+button {
+  border: none;
+  transition: 0.3s linear;
+}
+
+button:hover {
+  opacity: 0.8;
+  transition: 0.3s linear;
+}
