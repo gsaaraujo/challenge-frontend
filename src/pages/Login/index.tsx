@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import noUser from '../../assets/images/no-user.jpg';
 
+import { useAuth } from '../../hooks/useAuth';
 import { AppColors } from '../../constants/app_colors';
 
 import { Spacer } from '../../components/Spacer';
@@ -26,6 +27,8 @@ export const Login = () => {
 
   const { heading100, heading0 } = AppColors;
 
+  const { handleAuthentication } = useAuth();
+
   const handleUser = (title: string) => setUser(title);
   const handlePassword = (title: string) => setPassword(title);
 
@@ -33,18 +36,14 @@ export const Login = () => {
     const userEmpty = !user.trim().length;
     const passwordEmpty = !password.trim().length;
 
-    if (userEmpty) {
+    if (userEmpty && passwordEmpty) {
+      setWarningMessage('Campos usuário e senha são necessarios');
+    } else if (userEmpty) {
       setWarningMessage('Campo usuário é necessário');
     } else if (passwordEmpty) {
       setWarningMessage('Campo senha é necessário');
-    }
-
-    if (userEmpty && passwordEmpty) {
-      setWarningMessage('Campos usuario e senha são necessarios');
-    }
-
-    if (user === 'admin' && password === 'admin') {
-      //
+    } else if (user === 'admin' && password === 'admin') {
+      handleAuthentication('admin');
     } else {
       setWarningMessage('Usuário ou senha inválidos');
     }
