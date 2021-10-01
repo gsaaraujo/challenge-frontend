@@ -47,7 +47,7 @@ export const LoginContent = styled.form`
   width: 398px;
   height: 300px;
   padding: 38px;
-  border-radius: 20px;
+  border-radius: 10px;
   box-shadow: 0 0 10px ${AppColors.primary};
 `;
 
