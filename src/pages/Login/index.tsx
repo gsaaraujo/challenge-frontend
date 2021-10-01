@@ -32,7 +32,9 @@ export const Login = () => {
   const handleUser = (title: string) => setUser(title);
   const handlePassword = (title: string) => setPassword(title);
 
-  const handleSubmit = () => {
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+
     const userEmpty = !user.trim().length;
     const passwordEmpty = !password.trim().length;
 
@@ -43,7 +45,7 @@ export const Login = () => {
     } else if (passwordEmpty) {
       setWarningMessage('Campo senha é necessário');
     } else if (user === 'admin' && password === 'admin') {
-      handleAuthentication('admin');
+      handleAuthentication('Gabriel Araujo');
     } else {
       setWarningMessage('Usuário ou senha inválidos');
     }
@@ -61,7 +63,7 @@ export const Login = () => {
       </Header>
 
       <Section>
-        <LoginContent>
+        <LoginContent onSubmit={handleSubmit}>
           <Title color={heading100} weight={700}>
             Usuário
           </Title>
@@ -76,9 +78,11 @@ export const Login = () => {
 
           <Spacer height={10} />
           <WarningMessage>{warningMessage}</WarningMessage>
-          <Spacer height={45} />
+          <Spacer height={35} />
 
-          <LoginButton onClick={handleSubmit}>Entrar</LoginButton>
+          <LoginButton type='submit' onSubmit={handleSubmit}>
+            Entrar
+          </LoginButton>
         </LoginContent>
       </Section>
 

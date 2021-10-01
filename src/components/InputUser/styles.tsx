@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { AppColors } from '../../constants/app_colors';
 
 export const Container = styled.div`
-  width: 100%;
   height: 37px;
   display: flex;
   padding-left: 20px;
@@ -22,4 +21,6 @@ export const Container = styled.div`
   }
 `;
 
-export const ActionIcon = styled.div``;
+export const ActionIcon = styled.div`
+  padding-top: 5px;
+`;

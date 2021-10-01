@@ -1,13 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Login } from './pages/Login';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/global.css';
+
+import { Routes } from './routes';
+import { AuthProvider } from './context/authProvider';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Login />
+    <AuthProvider>
+      <Routes />
+    </AuthProvider>
   </React.StrictMode>,
   document.getElementById('root'),
 );

@@ -51,9 +51,9 @@ export const WarningMessage = styled.p`
   }
 `;
 
-export const LoginContent = styled.div`
+export const LoginContent = styled.form`
   width: 398px;
-  height: 321px;
+  height: 250px;
   padding: 38px;
   border-radius: 20px;
   box-shadow: 0 0 10px ${AppColors.primary};
@@ -63,7 +63,7 @@ export const LoginContent = styled.div`
   }
 
   @media screen and (max-width: 768px) {
-    width: 350px;
+    width: 330px;
   }
 `;
 

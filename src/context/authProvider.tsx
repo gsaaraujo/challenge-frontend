@@ -22,6 +22,7 @@ export const AuthContext = createContext<Data>({} as Data);
 // eslint-disable-next-line arrow-body-style
 export const AuthProvider = ({ children }: Props) => {
   const [user, setUser] = useState<User | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const userName = localStorage.getItem('Name');
@@ -32,9 +33,13 @@ export const AuthProvider = ({ children }: Props) => {
         photoUrl: defaultUserPhoto,
       });
     }
-  }, []);
+
+    setIsLoading(false);
+  }, [isLoading]);
 
   const handleAuthentication = (name: String) => {
+    setIsLoading(true);
+
     localStorage.setItem('Name', JSON.stringify(name));
   };
 
