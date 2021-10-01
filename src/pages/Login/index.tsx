@@ -39,7 +39,7 @@ export const Login = () => {
     const passwordEmpty = !password.trim().length;
 
     if (userEmpty && passwordEmpty) {
-      setWarningMessage('Campos usuário e senha são necessarios');
+      setWarningMessage('Campos usuário e senha são necessários');
     } else if (userEmpty) {
       setWarningMessage('Campo usuário é necessário');
     } else if (passwordEmpty) {

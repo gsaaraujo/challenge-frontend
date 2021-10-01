@@ -11,6 +11,7 @@ type Data = {
   user: User | null;
   // eslint-disable-next-line no-unused-vars
   handleAuthentication: (name: string) => void;
+  handleLogOut: () => void;
 };
 
 type Props = {
@@ -32,6 +33,8 @@ export const AuthProvider = ({ children }: Props) => {
         name: userName,
         photoUrl: defaultUserPhoto,
       });
+    } else {
+      setUser(null);
     }
 
     setIsLoading(false);
@@ -43,8 +46,14 @@ export const AuthProvider = ({ children }: Props) => {
     localStorage.setItem('Name', name);
   };
 
+  const handleLogOut = () => {
+    setIsLoading(true);
+
+    localStorage.clear();
+  };
+
   return (
-    <AuthContext.Provider value={{ user, handleAuthentication }}>
+    <AuthContext.Provider value={{ user, handleAuthentication, handleLogOut }}>
       {children}
     </AuthContext.Provider>
   );

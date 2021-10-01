@@ -23,6 +23,16 @@ export const Container = styled.nav`
   background-color: ${AppColors.header};
 `;
 
+export const ActionButton = styled.div`
+  cursor: pointer;
+  padding-top: 3px;
+`;
+
+export const DropLogOutContent = styled.div`
+  position: absolute;
+  top: 50px;
+`;
+
 export const Title = styled.p<TitleProps>`
   font-size: 16px;
   color: ${props => props.color};

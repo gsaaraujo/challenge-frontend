@@ -31,7 +31,7 @@ export const Section = styled.section`
 `;
 
 export const Title = styled.p<TitleProps>`
-  font-size: 16px;
+  font-size: 14px;
   color: ${props => props.color};
   font-weight: ${props => props.weight};
 
@@ -53,7 +53,7 @@ export const WarningMessage = styled.p`
 
 export const LoginContent = styled.form`
   width: 398px;
-  height: 250px;
+  height: 300px;
   padding: 38px;
   border-radius: 20px;
   box-shadow: 0 0 10px ${AppColors.primary};
