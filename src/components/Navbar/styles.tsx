@@ -41,6 +41,7 @@ export const Title = styled.p<TitleProps>`
 
 export const NavContent = styled.ul`
   display: flex;
+  flex: 1;
 `;
 
 export const NavItem = styled.li`

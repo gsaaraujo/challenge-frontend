@@ -15,10 +15,6 @@ export const Container = styled.div`
     transition: 0.3s linear;
     border-color: ${AppColors.hover};
   }
-
-  @media screen and (max-width: 576px) {
-    height: 30px;
-  }
 `;
 
 export const ActionIcon = styled.div`

@@ -34,10 +34,6 @@ export const Title = styled.p<TitleProps>`
   font-size: 14px;
   color: ${props => props.color};
   font-weight: ${props => props.weight};
-
-  @media screen and (max-width: 576px) {
-    font-size: 12px;
-  }
 `;
 
 export const WarningMessage = styled.p`
@@ -45,10 +41,6 @@ export const WarningMessage = styled.p`
   font-size: 13px;
   font-weight: 700;
   color: ${AppColors.warning};
-
-  @media screen and (max-width: 576px) {
-    font-size: 12px;
-  }
 `;
 
 export const LoginContent = styled.form`
@@ -57,14 +49,6 @@ export const LoginContent = styled.form`
   padding: 38px;
   border-radius: 20px;
   box-shadow: 0 0 10px ${AppColors.primary};
-
-  @media screen and (max-width: 576px) {
-    width: 250px;
-  }
-
-  @media screen and (max-width: 768px) {
-    width: 330px;
-  }
 `;
 
 export const LoginButton = styled.button`
