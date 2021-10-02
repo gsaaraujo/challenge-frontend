@@ -1,22 +1,25 @@
 export const AppColors = {
-  primary: '#464646',
+  primary: '#212529',
 
-  header: '#464646',
-  footer: '#464646',
+  header: '#212529',
+  footer: '#212529',
 
   background: '#FFFFFF',
-  inputBackground: '#F1F1F1',
 
-  heading100: '#464646',
+  heading100: '#212529',
   heading0: '#FFFFFF',
 
-  placeholer: '#A8A8A8',
+  placeholer: '#777777',
+  inputBorder: '#CED4DA',
   warning: '#BA3333',
 
-  hover: '#464646',
-  hoverMenuItem: '#5C5C5C',
-  focus: '#464646',
+  notSelected: '#777777',
+  selected: '#FFFFFF',
 
-  buttonBackground: '#464646',
-  buttonTitle: '#FFFFFF',
+  hover: '#212529',
+  hoverMenuItem: '#5C5C5C',
+  focus: '#212529',
+
+  buttonBackground: '#FFC107',
+  buttonTitle: '#212529',
 };

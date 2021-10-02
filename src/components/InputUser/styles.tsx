@@ -6,10 +6,10 @@ export const Container = styled.div`
   display: flex;
   padding-left: 10px;
   align-items: center;
-  border-radius: 10px;
+  border-radius: 5px;
   padding-right: 20px;
   transition: 0.3s linear;
-  border: 2px solid ${AppColors.placeholer};
+  border: 2px solid ${AppColors.inputBorder};
 
   &:hover {
     transition: 0.3s linear;

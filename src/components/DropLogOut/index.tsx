@@ -1,8 +1,11 @@
 import React from 'react';
 
-import { useAuth } from '../../hooks/useAuth';
+import { ReactComponent as LogOutIcon } from '../../assets/icons/log-out.svg';
 
-import { Container, Title } from './styles';
+import { useAuth } from '../../hooks/useAuth';
+import { Spacer } from '../Spacer';
+
+import { Container, Title, NavLink } from './styles';
 
 // eslint-disable-next-line arrow-body-style
 export const DropLogOut = () => {
@@ -10,7 +13,11 @@ export const DropLogOut = () => {
 
   return (
     <Container onClick={handleLogOut}>
-      <Title>Log Out</Title>
+      <NavLink>
+        <LogOutIcon />
+        <Spacer width={10} />
+        <Title>Deslogar</Title>
+      </NavLink>
     </Container>
   );
 };

@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 
 import { useLocation } from 'react-router-dom';
 
+import { ReactComponent as SearchIcon } from '../../assets/icons/search.svg';
+import { ReactComponent as DatabaseIcon } from '../../assets/icons/database.svg';
+
 import { AppColors } from '../../constants/app_colors';
 
 import { Spacer } from '../Spacer';
@@ -25,7 +28,7 @@ export const Navbar = () => {
   const { user } = useAuth();
   const location = useLocation();
 
-  const { heading0 } = AppColors;
+  const { selected, notSelected, heading0 } = AppColors;
 
   const handleIsLogOutVisible = () => setIsLogOutVisible(!isLogOutVisible);
 
@@ -46,17 +49,27 @@ export const Navbar = () => {
       <NavContent>
         <NavItem>
           <NavLink to='/' isSelected={location.pathname === '/'}>
-            <strong>Cadastrar dados</strong>
+            <DatabaseIcon
+              stroke={location.pathname === '/' ? selected : notSelected}
+            />
+            <Spacer height={3} />
+            Cadastrar
           </NavLink>
         </NavItem>
 
-        <Spacer width={25} />
+        <Spacer width={16} />
 
         <NavItem>
           <NavLink
             to='/searchData'
             isSelected={location.pathname === '/searchData'}>
-            <strong>Pesquisar dados</strong>
+            <SearchIcon
+              stroke={
+                location.pathname === '/searchData' ? selected : notSelected
+              }
+            />
+            <Spacer height={3} />
+            Pesquisar
           </NavLink>
         </NavItem>
       </NavContent>

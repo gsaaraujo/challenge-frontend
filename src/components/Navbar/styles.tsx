@@ -16,7 +16,7 @@ type NavLinkProps = {
 export const Container = styled.nav`
   display: flex;
   width: 100%;
-  height: 50px;
+  height: 72px;
   padding-left: 20px;
   align-items: center;
   padding-right: 20px;
@@ -36,7 +36,6 @@ export const DropLogOutContent = styled.div`
 export const Title = styled.p<TitleProps>`
   font-size: 16px;
   color: ${props => props.color};
-  font-weight: ${props => props.weight};
 `;
 
 export const NavContent = styled.ul`
@@ -48,19 +47,19 @@ export const NavItem = styled.li`
   padding: 8px 10px 6px;
   border-radius: 20px;
   border-bottom-width: 5px;
-  transition: 0.2s linear;
 
   &:hover {
-    transition: 0.2s linear;
-    background-color: ${AppColors.hoverMenuItem};
+    opacity: 0.8;
   }
 `;
 
 export const NavLink = styled(Link)<NavLinkProps>`
-  opacity: 1;
-  font-size: 16px;
-  padding-bottom: 10px;
-  color: ${AppColors.heading0};
-  border-bottom: 2px solid
-    ${props => (props.isSelected ? AppColors.background : AppColors.primary)};
+  display: flex;
+  font-size: 13px;
+  font-weight: 500;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  color: ${props =>
+    props.isSelected ? AppColors.selected : AppColors.notSelected};
 `;

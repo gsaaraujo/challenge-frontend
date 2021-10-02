@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
 
-import noUser from '../../assets/images/no-user.jpg';
-
 import { useAuth } from '../../hooks/useAuth';
 import { AppColors } from '../../constants/app_colors';
 
 import { Spacer } from '../../components/Spacer';
 import { InputUser } from '../../components/InputUser';
 import { Footer } from '../../components/Footer/styles';
-import { ProfilePhoto } from '../../components/ProfilePhoto';
 
 import {
   Container,
@@ -25,7 +22,7 @@ export const Login = () => {
   const [user, setUser] = useState('');
   const [password, setPassword] = useState('');
 
-  const { heading100, heading0 } = AppColors;
+  const { heading100 } = AppColors;
 
   const { handleAuthentication } = useAuth();
 
@@ -53,32 +50,25 @@ export const Login = () => {
 
   return (
     <Container>
-      <Header>
-        <ProfilePhoto imageURL={noUser} />
-
-        <Spacer width={15} />
-        <Title color={heading0} weight={400}>
-          Faça o Login para continuar ...
-        </Title>
-      </Header>
+      <Header />
 
       <Section>
         <LoginContent onSubmit={handleSubmit}>
-          <Title color={heading100} weight={700}>
-            Usuário
-          </Title>
+          <Title color={heading100}>Usuário</Title>
+          <Spacer height={5} />
+
           <InputUser handleOnChange={handleUser} />
 
           <Spacer height={20} />
 
-          <Title color={heading100} weight={700}>
-            Senha
-          </Title>
+          <Title color={heading100}>Senha</Title>
+          <Spacer height={5} />
+
           <InputUser isPassword handleOnChange={handlePassword} />
 
           <Spacer height={10} />
           <WarningMessage>{warningMessage}</WarningMessage>
-          <Spacer height={35} />
+          <Spacer height={25} />
 
           <LoginButton type='submit' onSubmit={handleSubmit}>
             Entrar

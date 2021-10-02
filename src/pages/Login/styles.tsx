@@ -3,7 +3,6 @@ import { AppColors } from '../../constants/app_colors';
 
 type TitleProps = {
   color: string;
-  weight: number;
 };
 
 export const Container = styled.div`
@@ -33,13 +32,11 @@ export const Section = styled.section`
 export const Title = styled.p<TitleProps>`
   font-size: 14px;
   color: ${props => props.color};
-  font-weight: ${props => props.weight};
 `;
 
 export const WarningMessage = styled.p`
   height: 20px;
   font-size: 13px;
-  font-weight: 700;
   color: ${AppColors.warning};
 `;
 
@@ -47,15 +44,19 @@ export const LoginContent = styled.form`
   width: 398px;
   height: 300px;
   padding: 38px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px ${AppColors.primary};
 `;
 
 export const LoginButton = styled.button`
   width: 100%;
   height: 37px;
+  font-size: 14px;
+  cursor: pointer;
   font-weight: 700;
-  border-radius: 20px;
+  border-radius: 5px;
   color: ${AppColors.buttonTitle};
   background-color: ${AppColors.buttonBackground};
+
+  &:hover {
+    background-color: #ffcf41;
+  }
 `;
