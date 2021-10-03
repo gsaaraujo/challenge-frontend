@@ -5,7 +5,8 @@ import { AppColors } from '../../constants/app_colors';
 
 import { Spacer } from '../../components/Spacer';
 import { InputUser } from '../../components/InputUser';
-import { Footer } from '../../components/Footer/styles';
+import { Footer } from '../../components/Footer';
+import { ActionButton } from '../../components/ActionButton';
 
 import {
   Container,
@@ -14,7 +15,6 @@ import {
   WarningMessage,
   Section,
   LoginContent,
-  LoginButton,
 } from './styles';
 
 export const Login = () => {
@@ -70,9 +70,7 @@ export const Login = () => {
           <WarningMessage>{warningMessage}</WarningMessage>
           <Spacer height={25} />
 
-          <LoginButton type='submit' onSubmit={handleSubmit}>
-            Entrar
-          </LoginButton>
+          <ActionButton title='Entrar' handleOnSubmit={handleSubmit} />
         </LoginContent>
       </Section>
 

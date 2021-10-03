@@ -1,5 +1,5 @@
 import React from 'react';
 
-import { Footer } from './styles';
+import { FooterBar } from './styles';
 
-export const Login = () => <Footer />;
+export const Footer = () => <FooterBar />;

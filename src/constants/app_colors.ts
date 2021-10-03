@@ -17,7 +17,7 @@ export const AppColors = {
   selected: '#FFFFFF',
 
   hover: '#212529',
-  hoverMenuItem: '#5C5C5C',
+  hoverMenuItem: '#393939',
   focus: '#212529',
 
   buttonBackground: '#FFC107',

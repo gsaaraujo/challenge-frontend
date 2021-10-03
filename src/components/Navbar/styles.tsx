@@ -47,9 +47,11 @@ export const NavItem = styled.li`
   padding: 8px 10px 6px;
   border-radius: 20px;
   border-bottom-width: 5px;
+  transition: 0.3s linear;
 
   &:hover {
-    opacity: 0.8;
+    transition: 0.1s linear;
+    background-color: ${AppColors.hoverMenuItem};
   }
 `;
 

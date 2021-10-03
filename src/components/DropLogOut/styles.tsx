@@ -3,11 +3,12 @@ import { AppColors } from '../../constants/app_colors';
 
 export const Container = styled.div`
   position: relative;
+  top: 10px;
+  left: 55px;
   width: 220px;
   height: 140px;
   display: flex;
   cursor: pointer;
-  padding: 20px 10px;
   border-radius: 5px;
   align-items: flex-end;
   transition: 0.3s linear;
@@ -34,9 +35,14 @@ export const Title = styled.p`
 export const NavLink = styled.div`
   width: 100%;
   display: flex;
+  border-radius: 5px;
+  padding: 20px 10px;
   align-items: center;
+  transition: 0.2s linear;
+  border-top: 2px solid ${AppColors.hoverMenuItem};
 
   &:hover {
-    opacity: 0.8;
+    transition: 0.2s linear;
+    background-color: ${AppColors.hoverMenuItem};
   }
 `;
