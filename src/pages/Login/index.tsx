@@ -29,9 +29,7 @@ export const Login = () => {
   const handleUser = (title: string) => setUser(title);
   const handlePassword = (title: string) => setPassword(title);
 
-  const handleSubmit = (e: any) => {
-    e.preventDefault();
-
+  const handleSubmit = () => {
     const userEmpty = !user.trim().length;
     const passwordEmpty = !password.trim().length;
 
@@ -70,7 +68,7 @@ export const Login = () => {
           <WarningMessage>{warningMessage}</WarningMessage>
           <Spacer height={25} />
 
-          <ActionButton title='Entrar' handleOnSubmit={handleSubmit} />
+          <ActionButton title='Entrar' handleOnClick={handleSubmit} />
         </LoginContent>
       </Section>
 

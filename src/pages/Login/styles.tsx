@@ -30,8 +30,23 @@ export const Section = styled.section`
 `;
 
 export const Title = styled.p<TitleProps>`
+  position: relative;
   font-size: 14px;
   color: ${props => props.color};
+
+  animation-name: dropDown;
+  animation-duration: 0.6s;
+
+  @keyframes dropDown {
+    from {
+      opacity: 0;
+      top: -20px;
+    }
+    to {
+      opacity: 1;
+      top: 0px;
+    }
+  }
 `;
 
 export const WarningMessage = styled.p`

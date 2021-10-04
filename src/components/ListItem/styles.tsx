@@ -6,26 +6,35 @@ type ContainerProps = {
 };
 
 export const Container = styled.div<ContainerProps>`
-  width: ${props => props.width};
-`;
-
-export const InputField = styled.input`
+  display: flex;
   width: 100%;
-  height: 40px;
+  height: 35px;
+  display: flex;
+  cursor: pointer;
   border-radius: 5px;
+  margin-bottom: 5px;
   padding-left: 20px;
   padding-right: 20px;
+  align-items: center;
   transition: 0.3s linear;
-  border: 2px solid ${AppColors.inputBorder};
+  justify-content: space-between;
+  width: ${props => props.width};
+  background-color: ${AppColors.listItem};
 
   &:hover {
     transition: 0.3s linear;
-    border-color: ${AppColors.hover};
+    background-color: ${AppColors.listItemHover};
   }
 `;
 
 export const Title = styled.p`
   font-size: 14px;
-  font-weight: 700;
   color: ${AppColors.heading100};
+`;
+
+export const WrapperIcon = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s linear;
 `;

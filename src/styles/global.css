@@ -9,6 +9,7 @@
 html,
 body {
   height: 100%;
+  user-select: none;
   overflow-x: hidden;
   font-family: 'Inter';
   letter-spacing: 0.5px;

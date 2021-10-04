@@ -9,7 +9,7 @@ type Props = {
   width?: string;
 };
 
-export const DropBoxField = ({ title, width = '100%' }: Props) => (
+export const ItemField = ({ title, width = '100%' }: Props) => (
   <Container width={width}>
     <Title>{title}</Title>
     <Spacer height={5} />

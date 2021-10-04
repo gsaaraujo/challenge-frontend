@@ -13,6 +13,9 @@ export const AppColors = {
   inputBorder: '#CED4DA',
   warning: '#BA3333',
 
+  listItem: '#E6EAEE',
+  listItemHover: '#CED4DA',
+
   notSelected: '#777777',
   selected: '#FFFFFF',
 

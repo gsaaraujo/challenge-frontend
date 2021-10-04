@@ -1,21 +1,20 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/require-default-props */
 import React from 'react';
 
 import { Container } from './styles';
 
 type Props = {
   title: string;
+  // eslint-disable-next-line react/require-default-props
   width?: string;
-  handleOnSubmit: (e: any) => void;
+  handleOnClick: () => void;
 };
 
 export const ActionButton = ({
   title,
   width = '100%',
-  handleOnSubmit,
+  handleOnClick,
 }: Props) => (
-  <Container type='submit' onSubmit={handleOnSubmit} width={width}>
+  <Container onClick={handleOnClick} width={width}>
     {title}
   </Container>
 );

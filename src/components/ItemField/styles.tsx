@@ -6,22 +6,8 @@ type ContainerProps = {
 };
 
 export const Container = styled.div<ContainerProps>`
-  height: 37px;
-  display: flex;
-  font-size: 14px;
-  cursor: pointer;
-  font-weight: 700;
   position: relative;
-  border-radius: 5px;
-  align-items: center;
-  justify-content: center;
   width: ${props => props.width};
-  color: ${AppColors.buttonTitle};
-  background-color: ${AppColors.buttonBackground};
-
-  &:hover {
-    background-color: #ffcf41;
-  }
 
   animation-name: dropDown;
   animation-duration: 0.6s;
@@ -36,4 +22,25 @@ export const Container = styled.div<ContainerProps>`
       top: 0px;
     }
   }
+`;
+
+export const InputField = styled.input`
+  width: 100%;
+  height: 35px;
+  border-radius: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+  transition: 0.3s linear;
+  border: 2px solid ${AppColors.inputBorder};
+
+  &:hover {
+    transition: 0.3s linear;
+    border-color: ${AppColors.hover};
+  }
+`;
+
+export const Title = styled.p`
+  font-size: 14px;
+  font-weight: 700;
+  color: ${AppColors.heading100};
 `;

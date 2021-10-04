@@ -50,7 +50,7 @@ export const NavItem = styled.li`
   transition: 0.3s linear;
 
   &:hover {
-    transition: 0.1s linear;
+    transition: 0.3s linear;
     background-color: ${AppColors.hoverMenuItem};
   }
 `;
