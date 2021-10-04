@@ -19,7 +19,7 @@ type Props = {
   title: string;
 };
 
-export const DropBoxItem = ({ title }: Props) => {
+export const DropBoxForm = ({ title }: Props) => {
   const [isDropDown, setIsDropDown] = useState(false);
 
   const handleDropDown = () => setIsDropDown(!isDropDown);

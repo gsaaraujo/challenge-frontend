@@ -5,7 +5,7 @@ import { ReactComponent as MinusSware } from '../../assets/icons/minus-square.sv
 
 import { Navbar } from '../../components/Navbar';
 import { Spacer } from '../../components/Spacer';
-import { DropBoxItem } from '../../components/DropBoxItem';
+import { DropBoxForm } from '../../components/DropBoxForm';
 
 import { Container, Section, Form, Field, Title, AddItem } from './styles';
 
@@ -34,11 +34,11 @@ export const RegisterData = () => {
         <Spacer height={30} />
 
         <Form onSubmit={handleFormVisible}>
-          <Field>{isFormVisible && <DropBoxItem title='Empresa' />}</Field>
+          <Field>{isFormVisible && <DropBoxForm title='Empresa' />}</Field>
 
           <Spacer width={30} />
 
-          <Field>{/* <DropBoxItem title='Sistema' /> */}</Field>
+          <Field>{/* <DropBoxForm title='Sistema' /> */}</Field>
         </Form>
       </Section>
     </Container>
