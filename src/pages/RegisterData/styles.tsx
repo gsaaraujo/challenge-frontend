@@ -31,6 +31,7 @@ export const Title = styled.p`
 `;
 
 export const AddItem = styled.div`
+  width: 100px;
   display: flex;
   cursor: pointer;
   align-items: center;

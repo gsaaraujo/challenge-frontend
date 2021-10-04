@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import { ReactComponent as PlusSquare } from '../../assets/icons/plus-square.svg';
+import { ReactComponent as MinusSware } from '../../assets/icons/minus-square.svg';
 
 import { Navbar } from '../../components/Navbar';
 import { Spacer } from '../../components/Spacer';
@@ -15,7 +16,7 @@ export const RegisterData = () => {
   const handleFormVisible = (e: any) => {
     e.preventDefault();
 
-    setIsFormVisible(true);
+    setIsFormVisible(!isFormVisible);
   };
 
   return (
@@ -26,9 +27,9 @@ export const RegisterData = () => {
         <Spacer height={30} />
 
         <AddItem onClick={handleFormVisible}>
-          <PlusSquare />
+          {isFormVisible ? <MinusSware /> : <PlusSquare />}
           <Spacer width={5} />
-          <Title>Adicionar</Title>
+          {isFormVisible ? <Title>Remover</Title> : <Title>Adicionar</Title>}
         </AddItem>
 
         <Spacer height={30} />
