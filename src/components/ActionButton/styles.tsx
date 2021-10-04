@@ -1,8 +1,12 @@
 import styled from 'styled-components';
 import { AppColors } from '../../constants/app_colors';
 
-export const Container = styled.button`
-  width: 100%;
+type ContainerProps = {
+  width: string;
+};
+
+export const Container = styled.button<ContainerProps>`
+  width: ${props => props.width};
   height: 37px;
   font-size: 14px;
   cursor: pointer;

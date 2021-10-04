@@ -1,11 +1,13 @@
 import React from 'react';
 
+import { Container } from './styles';
+
 type Props = {
   imageURL: string;
 };
 
 export const ProfilePhoto = ({ imageURL }: Props) => (
-  <>
+  <Container>
     <img
       src={imageURL}
       alt='noUser'
@@ -17,5 +19,5 @@ export const ProfilePhoto = ({ imageURL }: Props) => (
         objectFit: 'cover',
       }}
     />
-  </>
+  </Container>
 );

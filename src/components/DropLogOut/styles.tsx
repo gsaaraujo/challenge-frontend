@@ -6,7 +6,7 @@ export const Container = styled.div`
   top: 10px;
   left: 55px;
   width: 220px;
-  height: 140px;
+  height: 90px;
   display: flex;
   cursor: pointer;
   border-radius: 5px;
@@ -22,7 +22,7 @@ export const Container = styled.div`
       height: 50px;
     }
     to {
-      height: 140px;
+      height: 90px;
     }
   }
 `;
