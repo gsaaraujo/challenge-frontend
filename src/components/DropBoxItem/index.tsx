@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 
 import { ReactComponent as ArrowDown } from '../../assets/icons/arrow-down.svg';
-import { ActionButton } from '../ActionButton';
 
+import { ActionButton } from '../ActionButton';
 import { DropBoxField } from '../DropBoxField';
+
 import { Spacer } from '../Spacer';
 
 import {

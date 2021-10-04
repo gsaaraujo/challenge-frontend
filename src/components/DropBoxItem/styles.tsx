@@ -41,14 +41,16 @@ export const Title = styled.p`
   color: ${AppColors.heading100};
 `;
 
-export const WrapperIcon = styled.button<WrapperIconPros>`
+export const WrapperIcon = styled.div<WrapperIconPros>`
   display: flex;
+  cursor: pointer;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
   transform: ${props =>
     props.isDropDown ? 'rotate(-180deg)' : 'rotate(0deg)'};
   background-color: ${AppColors.background};
+
+  transition: 0.3s linear;
 `;
 
 export const FieldsContainer = styled.div`

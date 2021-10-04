@@ -15,7 +15,6 @@ export const RegisterData = () => {
 
   const handleFormVisible = (e: any) => {
     e.preventDefault();
-
     setIsFormVisible(!isFormVisible);
   };
 
