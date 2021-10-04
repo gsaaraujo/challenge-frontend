@@ -145,6 +145,11 @@ export const RegisterData = () => {
                     </>
                   </div>
                 ))}
+                <ActionButton
+                  title='Cadastrar'
+                  width='100%'
+                  handleOnClick={() => {}}
+                />
               </>
             )}
           </div>
