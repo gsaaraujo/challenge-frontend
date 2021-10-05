@@ -14,6 +14,7 @@ export const Container = styled.div<ContainerProps>`
   position: relative;
   border-radius: 5px;
   align-items: center;
+  transition: 0.3s linear;
   justify-content: center;
   width: ${props => props.width};
   color: ${AppColors.buttonTitle};
@@ -21,6 +22,7 @@ export const Container = styled.div<ContainerProps>`
 
   &:hover {
     background-color: #ffcf41;
+    transition: 0.3s linear;
   }
 
   animation-name: dropDown;

@@ -1,5 +1,5 @@
 /* eslint-disable react/require-default-props */
-import React, { useState } from 'react';
+import React from 'react';
 
 import { ReactComponent as ArrowDown } from '../../assets/icons/arrow-down.svg';
 
@@ -8,19 +8,20 @@ import { Container, Title, WrapperIcon } from './styles';
 type Props = {
   title: string;
   width?: string;
+  isActivated: boolean;
+  handleOnClick: () => void;
 };
 
-export const DropDownField = ({ title, width = '100%' }: Props) => {
-  const [isDropActivated, setIsDropActivated] = useState(false);
-
-  const handleDropsActivated = () => setIsDropActivated(!isDropActivated);
-
-  return (
-    <Container width={width} onClick={handleDropsActivated}>
-      <Title>{title}</Title>
-      <WrapperIcon isActivated={isDropActivated}>
-        <ArrowDown />
-      </WrapperIcon>
-    </Container>
-  );
-};
+export const DropDownField = ({
+  title,
+  width = '100%',
+  isActivated,
+  handleOnClick,
+}: Props) => (
+  <Container width={width} onClick={handleOnClick}>
+    <Title>{title}</Title>
+    <WrapperIcon isActivated={isActivated}>
+      <ArrowDown />
+    </WrapperIcon>
+  </Container>
+);

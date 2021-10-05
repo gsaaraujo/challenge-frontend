@@ -49,6 +49,7 @@ export const ItemName = styled.div`
   width: 100%;
   height: 35px;
   display: flex;
+  position: relative;
   border-radius: 5px;
   margin-bottom: 5px;
   padding-left: 20px;
@@ -56,6 +57,20 @@ export const ItemName = styled.div`
   align-items: center;
   transition: 0.3s linear;
   background-color: ${AppColors.listItem};
+
+  animation-name: dropDown;
+  animation-duration: 0.6s;
+
+  @keyframes dropDown {
+    from {
+      opacity: 0;
+      top: -20px;
+    }
+    to {
+      opacity: 1;
+      top: 0px;
+    }
+  }
 `;
 
 export const WrapperIcon = styled.div`

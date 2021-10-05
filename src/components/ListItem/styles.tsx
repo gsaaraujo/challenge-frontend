@@ -11,6 +11,7 @@ export const Container = styled.div<ContainerProps>`
   height: 35px;
   display: flex;
   cursor: pointer;
+  position: relative;
   border-radius: 5px;
   margin-bottom: 5px;
   padding-left: 20px;
@@ -24,6 +25,20 @@ export const Container = styled.div<ContainerProps>`
   &:hover {
     transition: 0.3s linear;
     background-color: ${AppColors.listItemHover};
+  }
+
+  animation-name: dropDown;
+  animation-duration: 0.6s;
+
+  @keyframes dropDown {
+    from {
+      opacity: 0;
+      top: -20px;
+    }
+    to {
+      opacity: 1;
+      top: 0px;
+    }
   }
 `;
 

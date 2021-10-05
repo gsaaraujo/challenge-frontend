@@ -28,8 +28,6 @@ export const RegisterData = () => {
   const [itemFieldSelected, setItemFieldSelected] = useState('');
   const [qtdItemField, setQtdItemField] = useState<number[]>([1]);
 
-  console.log('a');
-
   const handleIsDropDownActivated = () =>
     setIsDropDownActivated(!isDropDownActivated);
 
