@@ -10,6 +10,7 @@ type WrapperIconProps = {
 };
 
 export const Container = styled.div<ContainerProps>`
+  z-index: 100;
   height: 35px;
   display: flex;
   cursor: pointer;
