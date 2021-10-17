@@ -1,38 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import { ReactComponent as PlusSquare } from '../../assets/icons/plus-square.svg';
-import { ReactComponent as MinusSware } from '../../assets/icons/minus-square.svg';
+import { Spacer } from '../Spacer';
 
-import { AppColors } from '../../constants/app_colors';
+import { ReactComponent as Aperture } from '../../assets/icons/aperture.svg';
 
-import { Container, Title } from './styles';
+import { Container, Title, Field } from './styles';
 
 type Props = {
-  title: string;
   // eslint-disable-next-line react/require-default-props
   width?: string;
-  isActivated: boolean;
-  // eslint-disable-next-line no-unused-vars
-  handleOnClick: (title: string) => void;
 };
 
-export const ListItem = ({
-  title,
-  width = '100%',
-  isActivated,
-  handleOnClick,
-}: Props) => {
-  const { selected, notSelected } = AppColors;
+export const ListItem = ({ width = '100%' }: Props) => {
+  const [isDropActivated, setIsDropActivated] = useState(false);
+
+  const handleDropActivated = () => setIsDropActivated(!isDropActivated);
 
   return (
-    <Container
-      width={width}
-      backgroundColor={isActivated ? selected : notSelected}
-      onClick={() => {
-        handleOnClick(title);
-      }}>
-      <Title>{title}</Title>
-      {isActivated ? <MinusSware /> : <PlusSquare />}
+    <Container width={width} onClick={handleDropActivated}>
+      <Aperture />
+      <Spacer width={20} />
+
+      <Title>Selectione uma empresa </Title>
+      <Field />
     </Container>
   );
 };

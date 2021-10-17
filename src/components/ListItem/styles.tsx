@@ -3,7 +3,6 @@ import { AppColors } from '../../constants/app_colors';
 
 type ContainerProps = {
   width: string;
-  backgroundColor: string;
 };
 
 export const Container = styled.div<ContainerProps>`
@@ -21,7 +20,7 @@ export const Container = styled.div<ContainerProps>`
   transition: 0.3s linear;
   justify-content: space-between;
   width: ${props => props.width};
-  background-color: ${props => props.backgroundColor};
+  background-color: ${AppColors.listItem};
 
   &:hover {
     transition: 0.3s linear;
@@ -53,4 +52,8 @@ export const WrapperIcon = styled.div`
   align-items: center;
   justify-content: center;
   transition: 0.3s linear;
+`;
+
+export const Field = styled.div`
+  width: 100%;
 `;

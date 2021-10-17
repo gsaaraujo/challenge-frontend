@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react';
 
 import { ReactComponent as Aperture } from '../../assets/icons/aperture.svg';
@@ -5,7 +6,6 @@ import { ReactComponent as Aperture } from '../../assets/icons/aperture.svg';
 import { Navbar } from '../../components/Navbar';
 import { Spacer } from '../../components/Spacer';
 import { Sidebar } from '../../components/Sidebar';
-import { ListItem } from '../../components/ListItem';
 import { ItemField } from '../../components/ItemField';
 import { ActionButton } from '../../components/ActionButton';
 
@@ -19,18 +19,15 @@ import {
 } from './styles';
 
 export const RegisterData = () => {
-  const [isItemFieldActivated, setIsItemFieldActivated] = useState(false);
-  const [itemFieldSelected, setItemFieldSelected] = useState(
-    'Selecione uma empresa',
-  );
+  const [isDropActivated, setIsDropActivated] = useState(false);
+  const [itemSelected, setItemSelected] = useState('');
+  const [companyCollection] = useState(['TOTVS', 'GSA']);
 
-  const handleIsItemFieldActivated = (title: string) => {
-    // eslint-disable-next-line no-unused-expressions
-    itemFieldSelected === title
-      ? setItemFieldSelected('Selecione uma empresa')
-      : setItemFieldSelected(title);
+  const handleDropActivated = () => setIsDropActivated(!isDropActivated);
 
-    setIsItemFieldActivated(!isItemFieldActivated);
+  const handleItemSelected = (title: string) => {
+    setItemSelected(title);
+    setIsDropActivated(false);
   };
 
   return (
@@ -45,37 +42,27 @@ export const RegisterData = () => {
           <SubSection>
             <Spacer height={50} />
 
-            <Title size={14}>Empresas cadastradas</Title>
-            <Spacer height={40} />
-            <ListItem
-              title='TOTVS'
-              width='324px'
-              isActivated={itemFieldSelected === 'TOTVS'}
-              handleOnClick={handleIsItemFieldActivated}
-            />
-            <ListItem
-              title='GSA'
-              width='324px'
-              isActivated={itemFieldSelected === 'GSA'}
-              handleOnClick={handleIsItemFieldActivated}
-            />
-          </SubSection>
-
-          <Spacer width={50} />
-
-          <SubSection>
-            <Spacer height={50} />
-
             <Title size={14}>Cadastrar dados</Title>
             <Spacer height={40} />
 
             <>
-              <ItemName>
+              <ItemName onClick={handleDropActivated}>
                 <Aperture />
                 <Spacer width={10} />
-
-                <Title size={16}>{itemFieldSelected}</Title>
+                {itemSelected === '' ? (
+                  <Title size={16}>Selecione uma empresa</Title>
+                ) : (
+                  <Title size={16}>{itemSelected}</Title>
+                )}
               </ItemName>
+              {isDropActivated &&
+                companyCollection.map(each => (
+                  <ItemName onClick={() => handleItemSelected(each)}>
+                    <Spacer width={35} />
+                    <Title size={16}>{each}</Title>
+                  </ItemName>
+                ))}
+
               <Spacer height={10} />
 
               <>
@@ -90,7 +77,7 @@ export const RegisterData = () => {
                   <>
                     <ItemField title='Campo' />
                     <Spacer width={30} />
-                    <ItemField title='Value' />
+                    <ItemField title='Valor' />
                     <Spacer width={10} />
                   </>
                 </div>

@@ -48,9 +48,10 @@ export const Title = styled.p<TitleProps>`
 
 export const ItemName = styled.div`
   display: flex;
-  width: 407px;
+  width: 100%;
   height: 35px;
   display: flex;
+  cursor: pointer;
   position: relative;
   border-radius: 5px;
   margin-bottom: 5px;
@@ -66,7 +67,7 @@ export const ItemName = styled.div`
   @keyframes dropDown {
     from {
       opacity: 0;
-      top: -20px;
+      top: -10px;
     }
     to {
       opacity: 1;
