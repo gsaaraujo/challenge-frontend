@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import styled from 'styled-components';
 import { AppColors } from '../../constants/app_colors';
 
@@ -13,14 +12,17 @@ export const Container = styled.div`
   flex-direction: column;
 `;
 
+export const Content = styled.div`
+  display: flex;
+  flex: 1;
+`;
+
 export const Section = styled.section`
   display: flex;
 `;
 
 export const SubSection = styled.section`
   flex: 1;
-  padding-left: 20px;
-  padding-right: 20px;
 `;
 
 export const Title = styled.p<TitleProps>`
@@ -46,7 +48,7 @@ export const Title = styled.p<TitleProps>`
 
 export const ItemName = styled.div`
   display: flex;
-  width: 100%;
+  width: 407px;
   height: 35px;
   display: flex;
   position: relative;

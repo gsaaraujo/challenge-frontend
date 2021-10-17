@@ -38,7 +38,7 @@ export const Navbar = () => {
         <ProfilePhoto imageURL={user!.photoUrl} />
       </ActionButton>
       <Spacer width={15} />
-      <Title color={heading0} weight={400}>
+      <Title color={heading0} weight={400} size={16}>
         Bem vindo, <strong>{user!.name}</strong>
       </Title>
 
@@ -48,12 +48,23 @@ export const Navbar = () => {
 
       <NavContent>
         <NavItem>
-          <NavLink to='/' isSelected={location.pathname === '/'}>
+          <NavLink
+            to='/registerCompany'
+            isSelected={location.pathname.includes('/register')}>
             <DatabaseIcon
-              stroke={location.pathname === '/' ? selected : notSelected}
+              stroke={
+                location.pathname.includes('/register') ? selected : notSelected
+              }
             />
             <Spacer height={3} />
-            Cadastrar
+            <Title
+              color={
+                location.pathname.includes('/register') ? selected : notSelected
+              }
+              weight={500}
+              size={13.6}>
+              Cadastrar
+            </Title>
           </NavLink>
         </NavItem>
 
@@ -69,7 +80,14 @@ export const Navbar = () => {
               }
             />
             <Spacer height={3} />
-            Pesquisar
+            <Title
+              color={
+                location.pathname === '/searchData' ? selected : notSelected
+              }
+              weight={500}
+              size={13.6}>
+              Pesquisar
+            </Title>
           </NavLink>
         </NavItem>
       </NavContent>

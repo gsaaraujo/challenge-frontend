@@ -14,14 +14,16 @@ export const AppColors = {
   warning: '#BA3333',
 
   listItem: '#E6EAEE',
-  listItemHover: '#CED4DA',
+  listItemHover: '#FFC107',
 
-  notSelected: '#777777',
-  selected: '#FFFFFF',
+  notSelected: '#E6EAEE',
+  selected: '#FFC107',
 
   hover: '#212529',
   hoverMenuItem: '#393939',
   focus: '#212529',
+
+  sideMenu: '#f8f9fa',
 
   buttonBackground: '#FFC107',
   buttonTitle: '#212529',

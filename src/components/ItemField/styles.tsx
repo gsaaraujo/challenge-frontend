@@ -28,7 +28,7 @@ export const InputField = styled.input`
   width: 100%;
   height: 35px;
   border-radius: 5px;
-  padding-left: 20px;
+  padding-left: 10px;
   padding-right: 20px;
   transition: 0.3s linear;
   border: 2px solid ${AppColors.inputBorder};

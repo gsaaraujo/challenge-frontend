@@ -1,13 +1,18 @@
 import styled from 'styled-components';
-
 import { AppColors } from '../../constants/app_colors';
 
 export const Container = styled.div`
-  width: 150px;
   display: flex;
-  cursor: pointer;
+  width: 100vw;
+  height: 100vh;
+  flex-direction: column;
+`;
+
+export const Title = styled.p`
   position: relative;
-  align-items: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: ${AppColors.heading100};
 
   animation-name: dropDown;
   animation-duration: 0.6s;
@@ -24,8 +29,11 @@ export const Container = styled.div`
   }
 `;
 
-export const Title = styled.p`
-  font-size: 16px;
-  font-weight: 700;
-  color: ${AppColors.heading100};
+export const Content = styled.section`
+  display: flex;
+  flex: 1;
+`;
+
+export const Form = styled.div`
+  padding-left: 50px;
 `;

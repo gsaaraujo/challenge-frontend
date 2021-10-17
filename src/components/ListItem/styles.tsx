@@ -3,6 +3,7 @@ import { AppColors } from '../../constants/app_colors';
 
 type ContainerProps = {
   width: string;
+  backgroundColor: string;
 };
 
 export const Container = styled.div<ContainerProps>`
@@ -20,7 +21,7 @@ export const Container = styled.div<ContainerProps>`
   transition: 0.3s linear;
   justify-content: space-between;
   width: ${props => props.width};
-  background-color: ${AppColors.listItem};
+  background-color: ${props => props.backgroundColor};
 
   &:hover {
     transition: 0.3s linear;

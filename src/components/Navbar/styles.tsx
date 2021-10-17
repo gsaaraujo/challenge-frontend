@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { AppColors } from '../../constants/app_colors';
 
 type TitleProps = {
+  size: number;
   color: string;
   weight: number;
 };
@@ -14,13 +15,15 @@ type NavLinkProps = {
 };
 
 export const Container = styled.nav`
-  display: flex;
+  z-index: 100;
   width: 100%;
   height: 72px;
+  display: flex;
   padding-left: 20px;
   align-items: center;
   padding-right: 20px;
   background-color: ${AppColors.header};
+  box-shadow: 0 0.5rem 1rem rgba(33, 37, 45, 0.15);
 `;
 
 export const ActionButton = styled.div`
@@ -34,8 +37,8 @@ export const DropLogOutContent = styled.div`
 `;
 
 export const Title = styled.p<TitleProps>`
-  font-size: 16px;
   color: ${props => props.color};
+  font-size: ${props => props.size}px;
 `;
 
 export const NavContent = styled.ul`
@@ -44,8 +47,8 @@ export const NavContent = styled.ul`
 `;
 
 export const NavItem = styled.li`
-  padding: 8px 10px 6px;
   border-radius: 10px;
+  padding: 8px 10px 6px;
   border-bottom-width: 5px;
   transition: 0.3s linear;
 
@@ -55,7 +58,7 @@ export const NavItem = styled.li`
   }
 `;
 
-export const NavLink = styled(Link) <NavLinkProps>`
+export const NavLink = styled(Link)<NavLinkProps>`
   display: flex;
   font-size: 13px;
   font-weight: 500;

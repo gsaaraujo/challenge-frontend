@@ -9,8 +9,7 @@ import { RegisterCompany } from '../pages/RegisterCompany';
 export const AppRoutes = () => (
   <Switch>
     <Route path='/registerData' component={RegisterData} exact />
-    <Route path='/searchData' component={SearchData} />
     <Route path='/registerCompany' component={RegisterCompany} exact />
-    <Route path='/registerData' component={RegisterData} exact />
+    <Route path='/searchData' component={SearchData} exact />
   </Switch>
 );

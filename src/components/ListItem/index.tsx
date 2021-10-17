@@ -1,14 +1,15 @@
-/* eslint-disable arrow-body-style */
-/* eslint-disable react/require-default-props */
 import React from 'react';
 
 import { ReactComponent as PlusSquare } from '../../assets/icons/plus-square.svg';
 import { ReactComponent as MinusSware } from '../../assets/icons/minus-square.svg';
 
+import { AppColors } from '../../constants/app_colors';
+
 import { Container, Title } from './styles';
 
 type Props = {
   title: string;
+  // eslint-disable-next-line react/require-default-props
   width?: string;
   isActivated: boolean;
   // eslint-disable-next-line no-unused-vars
@@ -21,16 +22,14 @@ export const ListItem = ({
   isActivated,
   handleOnClick,
 }: Props) => {
-  // const [isDropActivated, setIsDropActivated] = useState(false);
-
-  // const handleDropsActivated = () => setIsDropActivated(!isDropActivated);
+  const { selected, notSelected } = AppColors;
 
   return (
     <Container
       width={width}
+      backgroundColor={isActivated ? selected : notSelected}
       onClick={() => {
         handleOnClick(title);
-        // handleDropsActivated();
       }}>
       <Title>{title}</Title>
       {isActivated ? <MinusSware /> : <PlusSquare />}
