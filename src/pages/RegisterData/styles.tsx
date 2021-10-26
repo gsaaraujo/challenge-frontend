@@ -23,13 +23,7 @@ export const Section = styled.section`
 
 export const SubSection = styled.section`
   flex: 1;
-`;
-
-export const Title = styled.p<TitleProps>`
   position: relative;
-  font-size: ${props => props.size};
-  font-weight: 700;
-  color: ${AppColors.heading100};
 
   animation-name: dropDown;
   animation-duration: 0.6s;
@@ -37,13 +31,20 @@ export const Title = styled.p<TitleProps>`
   @keyframes dropDown {
     from {
       opacity: 0;
-      top: -20px;
+      top: -10px;
     }
     to {
       opacity: 1;
       top: 0px;
     }
   }
+`;
+
+export const Title = styled.p<TitleProps>`
+  position: relative;
+  font-size: ${props => props.size};
+  font-weight: 700;
+  color: ${AppColors.heading100};
 `;
 
 export const ItemName = styled.div`

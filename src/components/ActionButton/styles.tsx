@@ -5,7 +5,7 @@ type ContainerProps = {
   width: string;
 };
 
-export const Container = styled.div<ContainerProps>`
+export const Container = styled.button<ContainerProps>`
   height: 37px;
   display: flex;
   font-size: 14px;

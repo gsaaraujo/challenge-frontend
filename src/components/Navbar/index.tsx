@@ -73,16 +73,16 @@ export const Navbar = () => {
         <NavItem>
           <NavLink
             to='/searchData'
-            isSelected={location.pathname === '/searchData'}>
+            isSelected={location.pathname.includes('/search')}>
             <SearchIcon
               stroke={
-                location.pathname === '/searchData' ? selected : notSelected
+                location.pathname.includes('/search') ? selected : notSelected
               }
             />
             <Spacer height={3} />
             <Title
               color={
-                location.pathname === '/searchData' ? selected : notSelected
+                location.pathname.includes('/search') ? selected : notSelected
               }
               weight={500}
               size={13.6}>

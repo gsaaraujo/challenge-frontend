@@ -34,7 +34,10 @@ export const RegisterData = () => {
     <Container>
       <Navbar />
       <Content>
-        <Sidebar />
+        <Sidebar
+          title={['Cadastrar empresa', 'Cadastrar sistema']}
+          path={['/registerCompany', '/registerData']}
+        />
 
         <Section>
           <Spacer width={50} />
@@ -67,17 +70,20 @@ export const RegisterData = () => {
 
               <>
                 <Spacer height={15} />
-                <ItemField title='Sistema' />
+                <ItemField title='Sistema' handleOnChange={() => {}} />
                 <Spacer height={15} />
 
-                <ItemField title='Proprietário do dado' />
+                <ItemField
+                  title='Proprietário do dado'
+                  handleOnChange={() => {}}
+                />
                 <Spacer height={15} />
 
                 <div style={{ display: 'flex', marginBottom: 20 }}>
                   <>
-                    <ItemField title='Campo' />
+                    <ItemField title='Campo' handleOnChange={() => {}} />
                     <Spacer width={30} />
-                    <ItemField title='Valor' />
+                    <ItemField title='Valor' handleOnChange={() => {}} />
                     <Spacer width={10} />
                   </>
                 </div>

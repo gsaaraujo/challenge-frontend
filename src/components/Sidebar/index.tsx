@@ -9,8 +9,15 @@ import { Spacer } from '../Spacer';
 
 import { Container, Title, NavContent, NavItem, NavLink } from './styles';
 
-export const Sidebar = () => {
+type Props = {
+  title: string[];
+  path: string[];
+};
+
+export const Sidebar = ({ path, title }: Props) => {
   const location = useLocation();
+
+  console.log(location.pathname);
 
   return (
     <Container>
@@ -18,24 +25,20 @@ export const Sidebar = () => {
 
       <NavContent>
         <NavItem>
-          <NavLink
-            to='/registerCompany'
-            isSelected={location.pathname === '/registerCompany'}>
+          <NavLink to={path[0]} isSelected={location.pathname === path[0]}>
             <Spacer width={10} />
             <Layers />
             <Spacer width={10} />
-            <Title>Cadastrar empresa</Title>
+            <Title>{title[0]}</Title>
           </NavLink>
 
           <Spacer height={10} />
 
-          <NavLink
-            to='/registerData'
-            isSelected={location.pathname === '/registerData'}>
+          <NavLink to={path[1]} isSelected={location.pathname === path[1]}>
             <Spacer width={10} />
             <Box />
             <Spacer width={10} />
-            <Title>Cadastrar dados</Title>
+            <Title>{title[1]}</Title>
           </NavLink>
         </NavItem>
       </NavContent>

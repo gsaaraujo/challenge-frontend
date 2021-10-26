@@ -6,7 +6,7 @@ import { Sidebar } from '../../components/Sidebar';
 import { Container } from './styles';
 
 // eslint-disable-next-line arrow-body-style
-export const SearchData = () => {
+export const SearchCompany = () => {
   return (
     <Container>
       <Navbar />
