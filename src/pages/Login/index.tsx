@@ -29,9 +29,11 @@ export const Login = () => {
   const handleUser = (title: string) => setUser(title);
   const handlePassword = (title: string) => setPassword(title);
 
-  const handleSubmit = () => {
+  const handleSubmit = (event: any) => {
     const userEmpty = !user.trim().length;
     const passwordEmpty = !password.trim().length;
+
+    event.preventDefault();
 
     if (userEmpty && passwordEmpty) {
       setWarningMessage('Campos usuário e senha são necessários');
@@ -51,7 +53,7 @@ export const Login = () => {
       <Header />
 
       <Section>
-        <LoginContent onSubmit={handleSubmit}>
+        <LoginContent onSubmit={event => handleSubmit(event)}>
           <Title color={heading100}>Usuário</Title>
           <Spacer height={5} />
 
@@ -68,7 +70,7 @@ export const Login = () => {
           <WarningMessage>{warningMessage}</WarningMessage>
           <Spacer height={25} />
 
-          <ActionButton title='Entrar' handleOnClick={handleSubmit} />
+          <ActionButton title='Entrar' />
         </LoginContent>
       </Section>
 

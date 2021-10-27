@@ -72,7 +72,7 @@ export const Navbar = () => {
 
         <NavItem>
           <NavLink
-            to='/searchData'
+            to='/searchCompany'
             isSelected={location.pathname.includes('/search')}>
             <SearchIcon
               stroke={

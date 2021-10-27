@@ -1,12 +1,12 @@
+/* eslint-disable react/require-default-props */
 import React from 'react';
 
 import { Container } from './styles';
 
 type Props = {
   title: string;
-  // eslint-disable-next-line react/require-default-props
   width?: string;
-  handleOnClick: () => void;
+  handleOnClick?: () => void;
 };
 
 export const ActionButton = ({

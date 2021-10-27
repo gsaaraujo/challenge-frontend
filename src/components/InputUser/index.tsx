@@ -24,6 +24,7 @@ export const InputUser = ({ isPassword = false, handleOnChange }: Props) => {
       <input
         type={isPasswordVisible ? 'password' : 'text'}
         maxLength={30}
+        style={{ height: 37 }}
         onChange={title => handleOnChange(title.target.value)}
       />
 
