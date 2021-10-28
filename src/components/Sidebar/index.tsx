@@ -17,8 +17,6 @@ type Props = {
 export const Sidebar = ({ path, title }: Props) => {
   const location = useLocation();
 
-  console.log(location.pathname);
-
   return (
     <Container>
       <Spacer height={25} />

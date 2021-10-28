@@ -14,14 +14,16 @@ export const Container = styled.div`
   transition: 0.3s linear;
   background-color: ${AppColors.primary};
 
-  animation-name: dropDown;
+  animation-name: dropDownContainer;
   animation-duration: 0.3s;
 
-  @keyframes dropDown {
+  @keyframes dropDownContainer {
     from {
+      opacity: 0;
       height: 50px;
     }
     to {
+      opacity: 1;
       height: 77px;
     }
   }
