@@ -39,7 +39,7 @@ export const Navbar = () => {
       </ActionButton>
       <Spacer width={15} />
       <Title color={heading0} weight={400} size={16}>
-        Bem vindo, <strong>{user!.name}</strong>
+        Bem vindo, <strong>{user!.user}</strong>
       </Title>
 
       <Spacer width={75} />

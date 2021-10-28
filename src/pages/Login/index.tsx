@@ -29,7 +29,7 @@ export const Login = () => {
   const handleUser = (title: string) => setUser(title);
   const handlePassword = (title: string) => setPassword(title);
 
-  const handleSubmit = (event: any) => {
+  const handleSubmit = async (event: any) => {
     const userEmpty = !user.trim().length;
     const passwordEmpty = !password.trim().length;
 
@@ -41,10 +41,12 @@ export const Login = () => {
       setWarningMessage('Campo usuário é necessário');
     } else if (passwordEmpty) {
       setWarningMessage('Campo senha é necessário');
-    } else if (user === 'admin' && password === 'admin') {
-      handleAuthentication('Gabriel Araujo');
     } else {
-      setWarningMessage('Usuário ou senha inválidos');
+      try {
+        await handleAuthentication(user, password);
+      } catch (error) {
+        setWarningMessage('Usuário ou senha inválidos');
+      }
     }
   };
 

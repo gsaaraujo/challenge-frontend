@@ -1,16 +1,19 @@
+/* eslint-disable no-shadow */
 import React, { createContext, ReactNode, useEffect, useState } from 'react';
 
 import defaultUserPhoto from '../assets/images/defaultUserPhoto.jpg';
 
+import { baseApi } from '../services/api';
+
 type User = {
-  name: string;
+  user: string;
   photoUrl: string;
 };
 
 type Data = {
   user: User | null;
   // eslint-disable-next-line no-unused-vars
-  handleAuthentication: (name: string) => void;
+  handleAuthentication: (user: string, password: string) => Promise<void> 
   handleLogOut: () => void;
 };
 
@@ -26,11 +29,11 @@ export const AuthProvider = ({ children }: Props) => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    const userName = localStorage.getItem('Name');
+    const userName = localStorage.getItem('User');
 
     if (userName) {
       setUser({
-        name: userName,
+        user: userName,
         photoUrl: defaultUserPhoto,
       });
     } else {
@@ -40,10 +43,19 @@ export const AuthProvider = ({ children }: Props) => {
     setIsLoading(false);
   }, [isLoading]);
 
-  const handleAuthentication = (name: string) => {
-    setIsLoading(true);
+  const handleAuthentication = async (user: string, password: string): Promise<void>  => {
+    try {
+      const response = await baseApi.post('/auths', { user, password });
 
-    localStorage.setItem('Name', name);
+      if(response.status === 200) {
+        localStorage.setItem('User', user);
+      }
+
+      setIsLoading(true);
+    } catch (error) {
+      // eslint-disable-next-line no-throw-literal
+      throw `Error: ${error}`;
+    }
   };
 
   const handleLogOut = () => {
