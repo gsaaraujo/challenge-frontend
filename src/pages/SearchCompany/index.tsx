@@ -1,4 +1,7 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
+
+import { useCompany } from '../../hooks/useCompany';
 
 import { Navbar } from '../../components/Navbar';
 import { Spacer } from '../../components/Spacer';
@@ -7,8 +10,9 @@ import { FetchItemList } from '../../components/FetchItemList';
 
 import { Container, Content, Title, Section, SubSection } from './styles';
 
-// eslint-disable-next-line arrow-body-style
 export const SearchCompany = () => {
+  const { company } = useCompany();
+
   return (
     <Container>
       <Navbar />
@@ -25,10 +29,10 @@ export const SearchCompany = () => {
           <SubSection>
             <Spacer height={50} />
 
-            <Title size={14}>Pesquisar empresas</Title>
+            <Title size={14}>Empresas cadastradas</Title>
             <Spacer height={40} />
 
-            <FetchItemList />
+            <FetchItemList data={company} />
           </SubSection>
         </Section>
       </Content>

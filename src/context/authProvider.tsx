@@ -45,7 +45,7 @@ export const AuthProvider = ({ children }: Props) => {
 
   const handleAuthentication = async (user: string, password: string): Promise<void>  => {
     try {
-      const response = await baseApi.post('/auths', { user, password });
+      const response = await baseApi.post('/auth', { user, password });
 
       if(response.status === 200) {
         localStorage.setItem('User', user);
