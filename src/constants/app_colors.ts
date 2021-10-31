@@ -16,6 +16,11 @@ export const AppColors = {
   listItem: '#E6EAEE',
   listItemHover: '#FFC107',
 
+  fetchItemList100: '#E6EAEE',
+  fetchItemListHeader: '#FFC107',
+  fetchItemListBorder: '#CED4DA',
+  fetchItemListHover: '#F3F3F3',
+
   notSelected: '#E6EAEE',
   selected: '#FFC107',
 

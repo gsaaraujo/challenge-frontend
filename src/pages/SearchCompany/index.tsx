@@ -30,9 +30,9 @@ export const SearchCompany = () => {
             <Spacer height={50} />
 
             <Title size={14}>Empresas cadastradas</Title>
-            <Spacer height={40} />
+            <Spacer height={20} />
 
-            <FetchItemList data={company} />
+            <FetchItemList title={['Nome', 'CNPJ']} data={company} />
           </SubSection>
         </Section>
       </Content>
