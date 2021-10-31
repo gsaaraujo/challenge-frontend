@@ -18,10 +18,11 @@ import {
 type Props = {
   title: string[];
   data: Company[] | null;
+  handleModalShown: () => void;
 };
 
 // eslint-disable-next-line arrow-body-style
-export const FetchItemList = ({ title, data }: Props) => {
+export const FetchItemList = ({ title, data, handleModalShown }: Props) => {
   return (
     <Container>
       <CollectionHeader>
@@ -32,26 +33,27 @@ export const FetchItemList = ({ title, data }: Props) => {
         <ListTitle />
         <ListTitle />
       </CollectionHeader>
-      {data!.map(company => (
-        <Collection>
-          <Item>
-            <Title>{company.name}</Title>
-          </Item>
-          <Item>
-            <Title>{company.cnpj}</Title>
-          </Item>
-          <Item>
-            <IconWrapper>
-              <EditIcon />
-            </IconWrapper>
-          </Item>
-          <Item>
-            <IconWrapper>
-              <TrashIcon />
-            </IconWrapper>
-          </Item>
-        </Collection>
-      ))}
+      {data &&
+        data.map(company => (
+          <Collection>
+            <Item>
+              <Title>{company.name}</Title>
+            </Item>
+            <Item>
+              <Title>{company.cnpj}</Title>
+            </Item>
+            <Item>
+              <IconWrapper>
+                <EditIcon />
+              </IconWrapper>
+            </Item>
+            <Item>
+              <IconWrapper onClick={handleModalShown}>
+                <TrashIcon />
+              </IconWrapper>
+            </Item>
+          </Collection>
+        ))}
     </Container>
   );
 };
