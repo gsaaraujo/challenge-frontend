@@ -11,6 +11,8 @@ export const AppColors = {
 
   placeholer: '#777777',
   inputBorder: '#CED4DA',
+  inputBorderHover: '#9CA2A7',
+
   warning: '#BA3333',
 
   listItem: '#E6EAEE',

@@ -35,7 +35,7 @@ export const InputField = styled.input`
 
   &:hover {
     transition: 0.3s linear;
-    border-color: ${AppColors.hover};
+    border-color: ${AppColors.inputBorderHover};
   }
 `;
 

@@ -14,7 +14,7 @@ export const Container = styled.div`
 
   &:hover {
     transition: 0.3s linear;
-    border-color: ${AppColors.hover};
+    border-color: ${AppColors.inputBorderHover};
   }
 
   animation-name: dropDown;

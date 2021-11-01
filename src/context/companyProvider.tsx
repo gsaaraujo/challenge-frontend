@@ -11,6 +11,11 @@ export type Company = {
 type Data = {
   company: Company[] | null;
   handleAddCompany: (name: string, cnpj: string) => Promise<void>;
+  handleUpdateCompany: (
+    oldName: string,
+    name: string,
+    cnpj: string,
+  ) => Promise<void>;
   handleDeleteCompany: (name: string) => Promise<void>;
   handleGetAllCompanies: () => void;
 };
@@ -40,6 +45,21 @@ export const CompanyProvider = ({ children }: Props) => {
       setIsLoading(true);
 
       await baseApi.post('/company', { name, cnpj });
+    } catch (error) {
+      // eslint-disable-next-line no-throw-literal
+      throw `Error: ${error}`;
+    }
+  };
+
+  const handleUpdateCompany = async (
+    oldName: string,
+    name: string,
+    cnpj: string,
+  ): Promise<void> => {
+    try {
+      setIsLoading(true);
+
+      await baseApi.put(`/companies/${oldName}`, { name, cnpj });
     } catch (error) {
       // eslint-disable-next-line no-throw-literal
       throw `Error: ${error}`;
@@ -77,6 +97,7 @@ export const CompanyProvider = ({ children }: Props) => {
       value={{
         company,
         handleAddCompany,
+        handleUpdateCompany,
         handleDeleteCompany,
         handleGetAllCompanies,
       }}>

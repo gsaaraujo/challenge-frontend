@@ -1,31 +1,61 @@
-import React, { useState } from 'react';
+/* eslint-disable @typescript-eslint/no-use-before-define */
+import React, { useEffect, useState } from 'react';
 
 import { useCompany } from '../../hooks/useCompany';
+import { Company } from '../../context/companyProvider';
 
 import { Navbar } from '../../components/Navbar';
 import { Spacer } from '../../components/Spacer';
 import { Sidebar } from '../../components/Sidebar';
 import { ConfirmModal } from '../../components/ConfirmModal';
 import { FetchItemList } from '../../components/FetchItemList';
-
-import { Container, Content, Title, Section, SubSection } from './styles';
+import { SearchItemList } from '../../components/SearchItemList';
 import { WarningMessage } from '../../components/WarningMessage';
 
+import { Container, Content, Title, Section, SubSection } from './styles';
+import { CompanyUpdateModal } from '../../components/CompanyUpdateModal';
+
 export const SearchCompany = () => {
-  const [isModalShown, setIsModalShown] = useState(false);
+  const [isDeleteModalShown, setIsDeleteModalShown] = useState(false);
+  const [isUpdateModalShown, setIsUpdateModalShown] = useState(false);
   const [companySelected, setCompanySelected] = useState('');
   const [warningMessage, setWarningMessage] = useState('');
+  const [searchText, setSearchText] = useState('');
+  const [companyFiltered, setCompanyFiltered] = useState<Company[] | null>([]);
 
   const { company, handleDeleteCompany } = useCompany();
 
-  const handleModalShown = () => setIsModalShown(!isModalShown);
+  useEffect(() => {
+    handleFilterText();
+  }, [company, searchText]);
+
+  const handleFilterText = () => {
+    let companyCopy = company;
+    const regex = new RegExp(searchText, 'i');
+
+    if (searchText && companyCopy !== null) {
+      companyCopy = companyCopy.filter(each => each.name.match(regex));
+
+      setCompanyFiltered(companyCopy);
+    } else {
+      setCompanyFiltered(company);
+    }
+  };
+
+  const handleDeleteModalShown = () =>
+    setIsDeleteModalShown(!isDeleteModalShown);
+
+  const handleUpdateModalShown = () =>
+    setIsUpdateModalShown(!isUpdateModalShown);
 
   const handleCompanySelected = (name: string) => setCompanySelected(name);
 
-  const handleOnConfirmModal = async () => {
+  const handleSearchText = (text: string) => setSearchText(text);
+
+  const handleOnConfirmDeleteModal = async () => {
     try {
       await handleDeleteCompany(companySelected);
-      handleModalShown();
+      handleDeleteModalShown();
     } catch (error) {
       setWarningMessage('Não foi possivel deletar, tente novamente mais tarde');
     }
@@ -48,24 +78,40 @@ export const SearchCompany = () => {
             <Spacer height={50} />
 
             <Title size={14}>Empresas cadastradas</Title>
-            <Spacer height={20} />
+            <Spacer height={30} />
+
+            <SearchItemList
+              title='Procurar empresa'
+              placeholder='Procurar por nome'
+              handleOnChange={handleSearchText}
+            />
+            <Spacer height={10} />
 
             <WarningMessage title={warningMessage} />
             <Spacer height={10} />
 
             <FetchItemList
               title={['Nome', 'CNPJ']}
-              data={company}
-              handleModalShown={handleModalShown}
+              data={companyFiltered}
+              handleDeleteModalShown={handleDeleteModalShown}
+              handleUpdateModalShown={handleUpdateModalShown}
               handleCompanySelected={handleCompanySelected}
             />
           </SubSection>
         </Section>
       </Content>
-      {isModalShown && (
+
+      {isDeleteModalShown && (
         <ConfirmModal
-          handleModalShown={handleModalShown}
-          handleOnConfirmModal={handleOnConfirmModal}
+          handleModalShown={handleDeleteModalShown}
+          handleOnConfirmModal={handleOnConfirmDeleteModal}
+        />
+      )}
+
+      {isUpdateModalShown && (
+        <CompanyUpdateModal
+          handleModalShown={handleUpdateModalShown}
+          companySelected={companySelected}
         />
       )}
     </Container>

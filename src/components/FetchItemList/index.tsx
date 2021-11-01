@@ -21,7 +21,8 @@ import { Spacer } from '../Spacer';
 type Props = {
   title: string[];
   data: Company[] | null;
-  handleModalShown: () => void;
+  handleDeleteModalShown: () => void;
+  handleUpdateModalShown: () => void;
   handleCompanySelected: (name: string) => void;
 };
 
@@ -29,7 +30,8 @@ type Props = {
 export const FetchItemList = ({
   title,
   data,
-  handleModalShown,
+  handleDeleteModalShown,
+  handleUpdateModalShown,
   handleCompanySelected,
 }: Props) => {
   return (
@@ -43,13 +45,14 @@ export const FetchItemList = ({
         <ListTitle />
       </CollectionHeader>
       {data === null || data!.length === 0 ? (
-        <>
-          <Collection>
-            <Item>
-              <Title>Nenhuma empresa cadastrada</Title>
-            </Item>
-          </Collection>
-        </>
+        <Collection>
+          <Item>
+            <Title>------------</Title>
+          </Item>
+          <Item>
+            <Title>Nenhuma empresa cadastrada</Title>
+          </Item>
+        </Collection>
       ) : (
         data!.map(company => (
           <Collection>
@@ -60,12 +63,12 @@ export const FetchItemList = ({
               <Title>{company.cnpj}</Title>
             </Item>
             <Item>
-              <IconWrapper>
+              <IconWrapper onClick={handleUpdateModalShown}>
                 <EditIcon onClick={() => handleCompanySelected(company.name)} />
               </IconWrapper>
             </Item>
             <Item>
-              <IconWrapper onClick={handleModalShown}>
+              <IconWrapper onClick={handleDeleteModalShown}>
                 <TrashIcon
                   onClick={() => handleCompanySelected(company.name)}
                 />
