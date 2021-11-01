@@ -18,9 +18,13 @@ import {
 
 type Props = {
   handleModalShown: () => void;
+  handleOnConfirmModal: () => void;
 };
 
-export const ConfirmModal = ({ handleModalShown }: Props) => {
+export const ConfirmModal = ({
+  handleModalShown,
+  handleOnConfirmModal,
+}: Props) => {
   const props = useSpring({ to: { opacity: 1 }, from: { opacity: 0 } });
 
   return (
@@ -34,7 +38,7 @@ export const ConfirmModal = ({ handleModalShown }: Props) => {
           <Spacer height={30} />
 
           <Action>
-            <Button onClick={handleModalShown}>Sim</Button>
+            <Button onClick={handleOnConfirmModal}>Sim</Button>
             <Spacer width={20} />
             <Button onClick={handleModalShown}>Não</Button>
           </Action>

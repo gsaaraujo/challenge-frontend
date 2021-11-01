@@ -1,3 +1,5 @@
+/* eslint-disable arrow-body-style */
+/* eslint-disable no-unused-vars */
 import React from 'react';
 
 import { ReactComponent as TrashIcon } from '../../assets/icons/trash.svg';
@@ -14,15 +16,22 @@ import {
   Item,
   IconWrapper,
 } from './styles';
+import { Spacer } from '../Spacer';
 
 type Props = {
   title: string[];
   data: Company[] | null;
   handleModalShown: () => void;
+  handleCompanySelected: (name: string) => void;
 };
 
 // eslint-disable-next-line arrow-body-style
-export const FetchItemList = ({ title, data, handleModalShown }: Props) => {
+export const FetchItemList = ({
+  title,
+  data,
+  handleModalShown,
+  handleCompanySelected,
+}: Props) => {
   return (
     <Container>
       <CollectionHeader>
@@ -33,8 +42,16 @@ export const FetchItemList = ({ title, data, handleModalShown }: Props) => {
         <ListTitle />
         <ListTitle />
       </CollectionHeader>
-      {data &&
-        data.map(company => (
+      {data === null || data!.length === 0 ? (
+        <>
+          <Collection>
+            <Item>
+              <Title>Nenhuma empresa cadastrada</Title>
+            </Item>
+          </Collection>
+        </>
+      ) : (
+        data!.map(company => (
           <Collection>
             <Item>
               <Title>{company.name}</Title>
@@ -44,16 +61,19 @@ export const FetchItemList = ({ title, data, handleModalShown }: Props) => {
             </Item>
             <Item>
               <IconWrapper>
-                <EditIcon />
+                <EditIcon onClick={() => handleCompanySelected(company.name)} />
               </IconWrapper>
             </Item>
             <Item>
               <IconWrapper onClick={handleModalShown}>
-                <TrashIcon />
+                <TrashIcon
+                  onClick={() => handleCompanySelected(company.name)}
+                />
               </IconWrapper>
             </Item>
           </Collection>
-        ))}
+        ))
+      )}
     </Container>
   );
 };

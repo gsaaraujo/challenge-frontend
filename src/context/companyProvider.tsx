@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-use-before-define */
 import React, { createContext, ReactNode, useEffect, useState } from 'react';
 import { baseApi } from '../services/api';
@@ -9,8 +10,8 @@ export type Company = {
 
 type Data = {
   company: Company[] | null;
-  // eslint-disable-next-line no-unused-vars
   handleAddCompany: (name: string, cnpj: string) => Promise<void>;
+  handleDeleteCompany: (name: string) => Promise<void>;
   handleGetAllCompanies: () => void;
 };
 
@@ -45,6 +46,17 @@ export const CompanyProvider = ({ children }: Props) => {
     }
   };
 
+  const handleDeleteCompany = async (name: string): Promise<void> => {
+    try {
+      setIsLoading(true);
+
+      await baseApi.delete(`/company/${name}`);
+    } catch (error) {
+      // eslint-disable-next-line no-throw-literal
+      throw `Error: ${error}`;
+    }
+  };
+
   const handleGetAllCompanies = async () => {
     try {
       setIsLoading(true);
@@ -62,7 +74,12 @@ export const CompanyProvider = ({ children }: Props) => {
 
   return (
     <CompanyContext.Provider
-      value={{ company, handleAddCompany, handleGetAllCompanies }}>
+      value={{
+        company,
+        handleAddCompany,
+        handleDeleteCompany,
+        handleGetAllCompanies,
+      }}>
       {children}
     </CompanyContext.Provider>
   );

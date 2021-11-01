@@ -19,7 +19,6 @@ export const RegisterCompany = () => {
   const [isSubmited, setIsSubmited] = useState(false);
   const [warningMessage, setWarningMessage] = useState('');
 
-  // eslint-disable-next-line no-unused-vars
   const { handleAddCompany } = useCompany();
 
   const handleCompanyName = (name: string) => setCompanyName(name);
@@ -35,10 +34,17 @@ export const RegisterCompany = () => {
     } else {
       setWarningMessage('');
 
-      await handleAddCompany(companyName, companyCNPJ);
-      setCompanyName('');
-      setCompanyCNPJ('');
-      handleSubmited(true);
+      try {
+        await handleAddCompany(companyName.trim(), companyCNPJ.trim());
+        handleSubmited(true);
+      } catch (error) {
+        setWarningMessage(
+          'Não foi possível cadastrar, tente novamente mais tarde',
+        );
+      } finally {
+        setCompanyName('');
+        setCompanyCNPJ('');
+      }
     }
   };
 

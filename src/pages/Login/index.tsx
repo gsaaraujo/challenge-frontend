@@ -45,7 +45,9 @@ export const Login = () => {
       try {
         await handleAuthentication(user, password);
       } catch (error) {
-        setWarningMessage('Usuário ou senha inválidos');
+        setWarningMessage(
+          'Não foi possível conectar, tente novamente mais tarde',
+        );
       }
     }
   };

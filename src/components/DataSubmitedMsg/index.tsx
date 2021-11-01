@@ -14,7 +14,7 @@ type Props = {
 export const DataSubmitedMsg = ({ handleOnClick }: Props) => {
   return (
     <Container>
-      <Title>Enviado com sucesso !</Title>
+      <Title>Cadastrado com sucesso !</Title>
       <Spacer height={20} />
       <ActionButton title='Voltar' handleOnClick={() => handleOnClick(false)} />
     </Container>
