@@ -50,7 +50,11 @@ export const FetchItemList = ({
             <Title>------------</Title>
           </Item>
           <Item>
-            <Title>Nenhuma empresa cadastrada</Title>
+            {data === null ? (
+              <Title>Não foi possível buscar empresas</Title>
+            ) : (
+              <Title>Nenhuma empresa cadastrada</Title>
+            )}
           </Item>
         </Collection>
       ) : (

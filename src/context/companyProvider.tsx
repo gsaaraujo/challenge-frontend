@@ -47,7 +47,7 @@ export const CompanyProvider = ({ children }: Props) => {
       await baseApi.post('/company', { name, cnpj });
     } catch (error) {
       // eslint-disable-next-line no-throw-literal
-      throw `Error: ${error}`;
+      throw `${error}`;
     }
   };
 
@@ -62,7 +62,7 @@ export const CompanyProvider = ({ children }: Props) => {
       await baseApi.put(`/companies/${oldName}`, { name, cnpj });
     } catch (error) {
       // eslint-disable-next-line no-throw-literal
-      throw `Error: ${error}`;
+      throw `${error}`;
     }
   };
 
@@ -73,7 +73,7 @@ export const CompanyProvider = ({ children }: Props) => {
       await baseApi.delete(`/company/${name}`);
     } catch (error) {
       // eslint-disable-next-line no-throw-literal
-      throw `Error: ${error}`;
+      throw `${error}`;
     }
   };
 
@@ -88,7 +88,7 @@ export const CompanyProvider = ({ children }: Props) => {
       }
     } catch (error) {
       // eslint-disable-next-line no-throw-literal
-      throw `Error: ${error}`;
+      throw `${error}`;
     }
   };
 

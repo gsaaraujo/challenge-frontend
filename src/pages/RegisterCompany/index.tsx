@@ -38,9 +38,13 @@ export const RegisterCompany = () => {
         await handleAddCompany(companyName.trim(), companyCNPJ.trim());
         handleSubmited(true);
       } catch (error) {
-        setWarningMessage(
-          'Não foi possível cadastrar, tente novamente mais tarde',
-        );
+        if (JSON.stringify(error).match(/code 403/)) {
+          setWarningMessage('Empresa já cadastrada');
+        } else {
+          setWarningMessage(
+            'Não foi possível cadastrar, tente novamente mais tarde',
+          );
+        }
       } finally {
         setCompanyName('');
         setCompanyCNPJ('');
