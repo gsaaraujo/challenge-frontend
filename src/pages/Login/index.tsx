@@ -45,9 +45,13 @@ export const Login = () => {
       try {
         await handleAuthentication(user, password);
       } catch (error) {
-        setWarningMessage(
-          'Não foi possível conectar, tente novamente mais tarde',
-        );
+        if (JSON.stringify(error).match(/code 401/)) {
+          setWarningMessage('Usuário ou senha inválidos');
+        } else {
+          setWarningMessage(
+            'Não foi possível conectar, tente novamente mais tarde',
+          );
+        }
       }
     }
   };

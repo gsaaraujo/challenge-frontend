@@ -13,7 +13,7 @@ type User = {
 type Data = {
   user: User | null;
   // eslint-disable-next-line no-unused-vars
-  handleAuthentication: (user: string, password: string) => Promise<void> 
+  handleAuthentication: (user: string, password: string) => Promise<void>;
   handleLogOut: () => void;
 };
 
@@ -43,18 +43,24 @@ export const AuthProvider = ({ children }: Props) => {
     setIsLoading(false);
   }, [isLoading]);
 
-  const handleAuthentication = async (user: string, password: string): Promise<void>  => {
+  const handleAuthentication = async (
+    user: string,
+    password: string,
+  ): Promise<void> => {
     try {
-      const response = await baseApi.post('/auth', { user, password });
+      const response = await baseApi.post('/auth', {
+        userLogin: user,
+        userPassword: password,
+      });
 
-      if(response.status === 200) {
+      if (response.status === 200) {
         localStorage.setItem('User', user);
       }
 
       setIsLoading(true);
     } catch (error) {
       // eslint-disable-next-line no-throw-literal
-      throw `Error: ${error}`;
+      throw `${error}`;
     }
   };
 
