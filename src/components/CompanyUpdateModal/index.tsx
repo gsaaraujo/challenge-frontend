@@ -56,6 +56,10 @@ export const CompanyUpdateModal = ({
           companyName.trim(),
           companyCNPJ.trim(),
         );
+
+        setCompanyName('');
+        setCompanyCNPJ('');
+
         handleModalShown();
       } catch (error) {
         if (JSON.stringify(error).match(/code 403/)) {
@@ -65,9 +69,6 @@ export const CompanyUpdateModal = ({
             'Não foi possível atualizar, tente novamente mais tarde',
           );
         }
-      } finally {
-        setCompanyName('');
-        setCompanyCNPJ('');
       }
     }
   };

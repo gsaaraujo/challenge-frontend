@@ -36,6 +36,9 @@ export const RegisterCompany = () => {
 
       try {
         await handleAddCompany(companyName.trim(), companyCNPJ.trim());
+
+        setCompanyName('');
+        setCompanyCNPJ('');
         handleSubmited(true);
       } catch (error) {
         if (JSON.stringify(error).match(/code 403/)) {
@@ -45,9 +48,6 @@ export const RegisterCompany = () => {
             'Não foi possível cadastrar, tente novamente mais tarde',
           );
         }
-      } finally {
-        setCompanyName('');
-        setCompanyCNPJ('');
       }
     }
   };
