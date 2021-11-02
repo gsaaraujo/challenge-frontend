@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 
 import { useCompany } from '../../hooks/useCompany';
 
+import { cnpjValidation } from '../../utils/cnpjValidation';
+
 import { Spacer } from '../../components/Spacer';
 import { Navbar } from '../../components/Navbar';
 import { Sidebar } from '../../components/Sidebar';
@@ -16,29 +18,48 @@ import { Container, Title, Content, Form } from './styles';
 export const RegisterCompany = () => {
   const [companyName, setCompanyName] = useState('');
   const [companyCNPJ, setCompanyCNPJ] = useState('');
+  const [companyCNPJMask, setCompanyCNPJMask] = useState('');
   const [isSubmited, setIsSubmited] = useState(false);
   const [warningMessage, setWarningMessage] = useState('');
 
   const { handleAddCompany } = useCompany();
 
-  const handleCompanyName = (name: string) => setCompanyName(name);
-  const handleCompanyCNPJ = (cnpj: string) => setCompanyCNPJ(cnpj);
+  const handleCompanyName = (name: string) => setCompanyName(name.trim());
+
+  const handleCompanyCNPJ = (cnpj: string) => {
+    let cnpjCopy = cnpj;
+
+    cnpjCopy = cnpjCopy.replace(/\D/g, '');
+    cnpjCopy = cnpjCopy.replace(/^(\d{2})(\d)/, '$1.$2');
+    cnpjCopy = cnpjCopy.replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3');
+    cnpjCopy = cnpjCopy.replace(/\.(\d{3})(\d)/, '.$1/$2');
+    cnpjCopy = cnpjCopy.replace(/(\d{4})(\d)/, '$1-$2');
+
+    setCompanyCNPJMask(cnpjCopy);
+
+    cnpjCopy = cnpjCopy.replace(/[^\d]+/g, '');
+    setCompanyCNPJ(cnpjCopy);
+  };
+
   const handleSubmited = (state: boolean) => setIsSubmited(state);
 
   const handleOnSubmit = async () => {
     const companyNameEmpty = !companyName.trim().length;
     const companyCNPJEmpty = !companyCNPJ.trim().length;
+    const cnpjNotValid = !cnpjValidation(companyCNPJ);
 
     if (companyNameEmpty || companyCNPJEmpty) {
       setWarningMessage('Todos os campos são necessários');
+    } else if (cnpjNotValid) {
+      setWarningMessage('CNPJ inválido');
     } else {
       setWarningMessage('');
 
       try {
-        await handleAddCompany(companyName.trim(), companyCNPJ.trim());
-
+        await handleAddCompany(companyName, companyCNPJ);
         setCompanyName('');
         setCompanyCNPJ('');
+        setCompanyCNPJMask('');
         handleSubmited(true);
       } catch (error) {
         if (JSON.stringify(error).match(/code 403/)) {
@@ -83,6 +104,8 @@ export const RegisterCompany = () => {
             <ItemField
               title='CNPJ'
               width='324px'
+              value={companyCNPJMask}
+              maxLength={18}
               handleOnChange={handleCompanyCNPJ}
             />
             <Spacer height={5} />
