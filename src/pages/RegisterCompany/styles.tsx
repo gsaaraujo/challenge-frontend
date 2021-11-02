@@ -34,6 +34,6 @@ export const Content = styled.section`
   flex: 1;
 `;
 
-export const Form = styled.div`
+export const Form = styled.form`
   padding-left: 50px;
 `;

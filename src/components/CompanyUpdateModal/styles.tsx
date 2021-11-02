@@ -12,7 +12,7 @@ export const Container = styled.div`
   background-color: rgba(0, 0, 0, 0.6);
 `;
 
-export const Content = styled.div`
+export const Content = styled.form`
   display: flex;
   width: 400px;
   height: 380px;

@@ -43,10 +43,12 @@ export const RegisterCompany = () => {
 
   const handleSubmited = (state: boolean) => setIsSubmited(state);
 
-  const handleOnSubmit = async () => {
+  const handleOnSubmit = async (event: any) => {
     const companyNameEmpty = !companyName.trim().length;
     const companyCNPJEmpty = !companyCNPJ.trim().length;
     const cnpjNotValid = !cnpjValidation(companyCNPJ);
+
+    event.preventDefault();
 
     if (companyNameEmpty || companyCNPJEmpty) {
       setWarningMessage('Todos os campos são necessários');
@@ -89,7 +91,7 @@ export const RegisterCompany = () => {
             <DataSubmitedMsg handleOnClick={handleSubmited} />
           </div>
         ) : (
-          <Form>
+          <Form onSubmit={event => handleOnSubmit(event)}>
             <Spacer height={50} />
 
             <Title>Cadastrar empresa</Title>
@@ -113,11 +115,7 @@ export const RegisterCompany = () => {
             <Spacer height={35} />
 
             <div>
-              <ActionButton
-                title='Cadastrar'
-                width='324px'
-                handleOnClick={handleOnSubmit}
-              />
+              <ActionButton title='Cadastrar' width='324px' />
             </div>
           </Form>
         )}

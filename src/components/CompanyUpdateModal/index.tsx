@@ -58,10 +58,12 @@ export const CompanyUpdateModal = ({
     setCompanyCNPJ(cnpjCopy);
   };
 
-  const handleOnConfirmUpdateModal = async () => {
+  const handleOnConfirmUpdateModal = async (event: any) => {
     const companyNameEmpty = !companyName.trim().length;
     const companyCNPJEmpty = !companyCNPJ.trim().length;
     const cnpjNotValid = !cnpjValidation(companyCNPJ);
+
+    event.preventDefault();
 
     if (companyNameEmpty || companyCNPJEmpty) {
       setWarningMessage('Todos os campos são necessários');
@@ -97,7 +99,7 @@ export const CompanyUpdateModal = ({
   return (
     <Container>
       <animated.div style={props}>
-        <Content>
+        <Content onSubmit={event => handleOnConfirmUpdateModal(event)}>
           <WrapperIcon>
             <Exit onClick={handleModalShown} />
           </WrapperIcon>
@@ -124,9 +126,7 @@ export const CompanyUpdateModal = ({
           <Spacer height={35} />
 
           <Action>
-            <Button onClick={handleOnConfirmUpdateModal}>
-              Atualizar dados
-            </Button>
+            <Button>Atualizar dados</Button>
           </Action>
         </Content>
       </animated.div>
