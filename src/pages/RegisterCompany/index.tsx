@@ -81,7 +81,7 @@ export const RegisterCompany = () => {
 
       <Content>
         <Sidebar
-          title={['Cadastrar empresa', 'Cadastrar sistema']}
+          title={['Cadastrar empresa', 'Cadastrar dados']}
           path={['/registerCompany', '/registerData']}
         />
 

@@ -42,7 +42,7 @@ export const SubSection = styled.section`
 
 export const Title = styled.p<TitleProps>`
   position: relative;
-  font-size: ${props => props.size};
+  font-size: ${props => props.size}px;
   font-weight: 700;
   color: ${AppColors.heading100};
 `;

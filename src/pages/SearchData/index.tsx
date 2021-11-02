@@ -12,7 +12,7 @@ export const SearchData = () => {
       <Navbar />
 
       <Sidebar
-        title={['Pesquisar empresa', 'Pesquisar sistema']}
+        title={['Pesquisar empresa', 'Pesquisar dados']}
         path={['/searchCompany', '/searchData']}
       />
     </Container>

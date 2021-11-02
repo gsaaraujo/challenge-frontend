@@ -77,7 +77,7 @@ export const SearchCompany = () => {
 
       <Content>
         <Sidebar
-          title={['Pesquisar empresa', 'Pesquisar sistema']}
+          title={['Pesquisar empresa', 'Pesquisar dados']}
           path={['/searchCompany', '/searchData']}
         />
 
