@@ -18,7 +18,7 @@ import { CompanyUpdateModal } from '../../components/CompanyUpdateModal';
 export const SearchCompany = () => {
   const [isDeleteModalShown, setIsDeleteModalShown] = useState(false);
   const [isUpdateModalShown, setIsUpdateModalShown] = useState(false);
-  const [companySelected, setCompanySelected] = useState('');
+  const [companySelected, setCompanySelected] = useState(0);
   const [warningMessage, setWarningMessage] = useState('');
   const [searchText, setSearchText] = useState('');
   const [companyFiltered, setCompanyFiltered] = useState<Company[] | null>([]);
@@ -48,7 +48,7 @@ export const SearchCompany = () => {
   const handleUpdateModalShown = () =>
     setIsUpdateModalShown(!isUpdateModalShown);
 
-  const handleCompanySelected = (name: string) => setCompanySelected(name);
+  const handleCompanySelected = (id: number) => setCompanySelected(id);
 
   const handleSearchText = (text: string) => setSearchText(text);
 

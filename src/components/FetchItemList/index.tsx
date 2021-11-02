@@ -23,7 +23,7 @@ type Props = {
   data: Company[] | null;
   handleDeleteModalShown: () => void;
   handleUpdateModalShown: () => void;
-  handleCompanySelected: (name: string) => void;
+  handleCompanySelected: (id: number) => void;
 };
 
 // eslint-disable-next-line arrow-body-style
@@ -68,14 +68,12 @@ export const FetchItemList = ({
             </Item>
             <Item>
               <IconWrapper onClick={handleUpdateModalShown}>
-                <EditIcon onClick={() => handleCompanySelected(company.name)} />
+                <EditIcon onClick={() => handleCompanySelected(company.id)} />
               </IconWrapper>
             </Item>
             <Item>
               <IconWrapper onClick={handleDeleteModalShown}>
-                <TrashIcon
-                  onClick={() => handleCompanySelected(company.name)}
-                />
+                <TrashIcon onClick={() => handleCompanySelected(company.id)} />
               </IconWrapper>
             </Item>
           </Collection>

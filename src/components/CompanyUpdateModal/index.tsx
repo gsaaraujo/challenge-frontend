@@ -22,7 +22,7 @@ import {
 } from './styles';
 
 type Props = {
-  companySelected: string;
+  companySelected: number;
   handleModalShown: () => void;
 };
 
@@ -58,9 +58,13 @@ export const CompanyUpdateModal = ({
         );
         handleModalShown();
       } catch (error) {
-        setWarningMessage(
-          'Não foi possível atualizar, tente novamente mais tarde',
-        );
+        if (JSON.stringify(error).match(/code 403/)) {
+          setWarningMessage('Empresa já cadastrada');
+        } else {
+          setWarningMessage(
+            'Não foi possível atualizar, tente novamente mais tarde',
+          );
+        }
       } finally {
         setCompanyName('');
         setCompanyCNPJ('');

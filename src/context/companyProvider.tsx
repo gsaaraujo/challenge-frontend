@@ -4,6 +4,7 @@ import React, { createContext, ReactNode, useEffect, useState } from 'react';
 import { baseApi } from '../services/api';
 
 export type Company = {
+  id: number;
   name: string;
   cnpj: string;
 };
@@ -12,11 +13,11 @@ type Data = {
   company: Company[] | null;
   handleAddCompany: (name: string, cnpj: string) => Promise<void>;
   handleUpdateCompany: (
-    oldName: string,
+    id: number,
     name: string,
     cnpj: string,
   ) => Promise<void>;
-  handleDeleteCompany: (name: string) => Promise<void>;
+  handleDeleteCompany: (id: number) => Promise<void>;
   handleGetAllCompanies: () => void;
 };
 
@@ -52,25 +53,25 @@ export const CompanyProvider = ({ children }: Props) => {
   };
 
   const handleUpdateCompany = async (
-    oldName: string,
+    id: number,
     name: string,
     cnpj: string,
   ): Promise<void> => {
     try {
       setIsLoading(true);
 
-      await baseApi.put(`/companies/${oldName}`, { name, cnpj });
+      await baseApi.put(`/companies/${id}`, { name, cnpj });
     } catch (error) {
       // eslint-disable-next-line no-throw-literal
       throw `${error}`;
     }
   };
 
-  const handleDeleteCompany = async (name: string): Promise<void> => {
+  const handleDeleteCompany = async (id: number): Promise<void> => {
     try {
       setIsLoading(true);
 
-      await baseApi.delete(`/company/${name}`);
+      await baseApi.delete(`/company/${id}`);
     } catch (error) {
       // eslint-disable-next-line no-throw-literal
       throw `${error}`;
