@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable @typescript-eslint/no-use-before-define */
 import React, { useEffect, useState } from 'react';
 
@@ -30,6 +31,15 @@ export const SearchCompany = () => {
   }, [company, searchText]);
 
   const handleFilterText = () => {
+    if (company) {
+      company.forEach(each => {
+        each.cnpj = each.cnpj.replace(
+          /^(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/,
+          '$1.$2.$3/$4-$5',
+        );
+      });
+    }
+
     let companyCopy = company;
     const regex = new RegExp(searchText, 'i');
 

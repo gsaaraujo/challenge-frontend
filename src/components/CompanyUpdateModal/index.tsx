@@ -12,6 +12,8 @@ import { Spacer } from '../Spacer';
 import { ItemField } from '../ItemField';
 import { WarningMessage } from '../WarningMessage';
 
+import { cnpjValidation } from '../../utils/cnpjValidation';
+
 import {
   Container,
   Content,
@@ -33,20 +35,38 @@ export const CompanyUpdateModal = ({
   const [warningMessage, setWarningMessage] = useState('');
   const [companyName, setCompanyName] = useState('');
   const [companyCNPJ, setCompanyCNPJ] = useState('');
+  const [companyCNPJMask, setCompanyCNPJMask] = useState('');
 
   const props = useSpring({ to: { opacity: 1 }, from: { opacity: 0 } });
 
   const { handleUpdateCompany } = useCompany();
 
   const handleCompanyName = (name: string) => setCompanyName(name);
-  const handleCompanyCNPJ = (cnpj: string) => setCompanyCNPJ(cnpj);
+
+  const handleCompanyCNPJ = (cnpj: string) => {
+    let cnpjCopy = cnpj;
+
+    cnpjCopy = cnpjCopy.replace(/\D/g, '');
+    cnpjCopy = cnpjCopy.replace(/^(\d{2})(\d)/, '$1.$2');
+    cnpjCopy = cnpjCopy.replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3');
+    cnpjCopy = cnpjCopy.replace(/\.(\d{3})(\d)/, '.$1/$2');
+    cnpjCopy = cnpjCopy.replace(/(\d{4})(\d)/, '$1-$2');
+
+    setCompanyCNPJMask(cnpjCopy);
+
+    cnpjCopy = cnpjCopy.replace(/[^\d]+/g, '');
+    setCompanyCNPJ(cnpjCopy);
+  };
 
   const handleOnConfirmUpdateModal = async () => {
     const companyNameEmpty = !companyName.trim().length;
     const companyCNPJEmpty = !companyCNPJ.trim().length;
+    const cnpjNotValid = !cnpjValidation(companyCNPJ);
 
     if (companyNameEmpty || companyCNPJEmpty) {
       setWarningMessage('Todos os campos são necessários');
+    } else if (cnpjNotValid) {
+      setWarningMessage('CNPJ inválido');
     } else {
       setWarningMessage('');
 
@@ -59,6 +79,7 @@ export const CompanyUpdateModal = ({
 
         setCompanyName('');
         setCompanyCNPJ('');
+        setCompanyCNPJMask('');
 
         handleModalShown();
       } catch (error) {
@@ -93,6 +114,8 @@ export const CompanyUpdateModal = ({
           <ItemField
             title='CNPJ'
             width='324px'
+            value={companyCNPJMask}
+            maxLength={18}
             handleOnChange={handleCompanyCNPJ}
           />
 
