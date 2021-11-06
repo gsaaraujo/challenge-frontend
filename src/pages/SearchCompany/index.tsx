@@ -9,12 +9,12 @@ import { Navbar } from '../../components/Navbar';
 import { Spacer } from '../../components/Spacer';
 import { Sidebar } from '../../components/Sidebar';
 import { ConfirmModal } from '../../components/ConfirmModal';
-import { FetchItemList } from '../../components/FetchItemList';
 import { SearchItemList } from '../../components/SearchItemList';
 import { WarningMessage } from '../../components/WarningMessage';
+import { CompanyUpdateModal } from '../../components/CompanyUpdateModal';
+import { CompanyFetchItemList } from '../../components/CompanyFetchItemList';
 
 import { Container, Content, Title, Section, SubSection } from './styles';
-import { CompanyUpdateModal } from '../../components/CompanyUpdateModal';
 
 export const SearchCompany = () => {
   const [isDeleteModalShown, setIsDeleteModalShown] = useState(false);
@@ -38,17 +38,17 @@ export const SearchCompany = () => {
           '$1.$2.$3/$4-$5',
         );
       });
-    }
 
-    let companyCopy = company;
-    const regex = new RegExp(searchText, 'i');
+      let companyCopy = company;
+      const regex = new RegExp(searchText, 'i');
 
-    if (searchText && companyCopy !== null) {
-      companyCopy = companyCopy.filter(each => each.name.match(regex));
+      if (searchText && companyCopy !== null) {
+        companyCopy = companyCopy.filter(each => each.name.match(regex));
 
-      setCompanyFiltered(companyCopy);
-    } else {
-      setCompanyFiltered(company);
+        setCompanyFiltered(companyCopy);
+      } else {
+        setCompanyFiltered(company);
+      }
     }
   };
 
@@ -100,12 +100,11 @@ export const SearchCompany = () => {
             <WarningMessage title={warningMessage} />
             <Spacer height={10} />
 
-            <FetchItemList
-              title={['Nome', 'CNPJ']}
+            <CompanyFetchItemList
               data={companyFiltered}
               handleDeleteModalShown={handleDeleteModalShown}
               handleUpdateModalShown={handleUpdateModalShown}
-              handleCompanySelected={handleCompanySelected}
+              handleItemSelected={handleCompanySelected}
             />
           </SubSection>
         </Section>

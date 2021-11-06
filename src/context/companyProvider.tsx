@@ -85,7 +85,7 @@ export const CompanyProvider = ({ children }: Props) => {
       const response: any = await baseApi.get('/companies');
 
       if (response.data) {
-        setCompany(response.data.data as Company[]);
+        setCompany(response.data as Company[]);
       }
     } catch (error) {
       // eslint-disable-next-line no-throw-literal

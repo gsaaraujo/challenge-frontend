@@ -8,6 +8,7 @@ import { AppRoutes } from './app.routes';
 import { AuthRoutes } from './auth.routes';
 
 import { CompanyProvider } from '../context/companyProvider';
+import { ClientDataProvider } from '../context/clientDataProvider';
 
 export const Routes = () => {
   const { user } = useAuth();
@@ -16,7 +17,9 @@ export const Routes = () => {
     <Router>
       {user ? (
         <CompanyProvider>
-          <AppRoutes />
+          <ClientDataProvider>
+            <AppRoutes />
+          </ClientDataProvider>
         </CompanyProvider>
       ) : (
         <AuthRoutes />

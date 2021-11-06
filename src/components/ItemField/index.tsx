@@ -1,3 +1,5 @@
+/* eslint-disable arrow-body-style */
+/* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable react/require-default-props */
 import React from 'react';
 import { Spacer } from '../Spacer';
@@ -10,7 +12,8 @@ type Props = {
   width?: string;
   maxLength?: number;
   // eslint-disable-next-line no-unused-vars
-  handleOnChange: (text: string) => void;
+  handleOnChange?: (text: string) => void;
+  props?: any;
 };
 
 export const ItemField = ({
@@ -18,15 +21,19 @@ export const ItemField = ({
   value,
   maxLength = 40,
   width = '100%',
-  handleOnChange,
-}: Props) => (
-  <Container width={width}>
-    <Title>{title}</Title>
-    <Spacer height={5} />
-    <InputField
-      value={value}
-      maxLength={maxLength}
-      onChange={text => handleOnChange(text.target.value)}
-    />
-  </Container>
-);
+  handleOnChange = () => {},
+  props,
+}: Props) => {
+  return (
+    <Container width={width}>
+      <Title>{title}</Title>
+      <Spacer height={5} />
+      <InputField
+        {...props}
+        value={value}
+        maxLength={maxLength}
+        onChange={text => handleOnChange(text.target.value)}
+      />
+    </Container>
+  );
+};
