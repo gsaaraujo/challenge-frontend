@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 /* eslint-disable no-param-reassign */
 /* eslint-disable @typescript-eslint/no-use-before-define */
 import React, { useEffect, useState } from 'react';
@@ -19,7 +20,9 @@ import { Container, Content, Title, Section, SubSection } from './styles';
 export const SearchCompany = () => {
   const [isDeleteModalShown, setIsDeleteModalShown] = useState(false);
   const [isUpdateModalShown, setIsUpdateModalShown] = useState(false);
-  const [companySelected, setCompanySelected] = useState(0);
+  const [companySelected, setCompanySelected] = useState<Company>(
+    {} as Company,
+  );
   const [warningMessage, setWarningMessage] = useState('');
   const [searchText, setSearchText] = useState('');
   const [companyFiltered, setCompanyFiltered] = useState<Company[] | null>([]);
@@ -58,13 +61,14 @@ export const SearchCompany = () => {
   const handleUpdateModalShown = () =>
     setIsUpdateModalShown(!isUpdateModalShown);
 
-  const handleCompanySelected = (id: number) => setCompanySelected(id);
+  const handleCompanySelected = (company: Company) =>
+    setCompanySelected(company);
 
   const handleSearchText = (text: string) => setSearchText(text);
 
   const handleOnConfirmDeleteModal = async () => {
     try {
-      await handleDeleteCompany(companySelected);
+      await handleDeleteCompany(companySelected.id);
       handleDeleteModalShown();
     } catch (error) {
       setWarningMessage('Não foi possivel deletar, tente novamente mais tarde');

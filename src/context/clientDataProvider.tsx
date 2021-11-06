@@ -8,7 +8,7 @@ type Client = {
   name: string;
 };
 
-type Company = {
+export type Company = {
   name: string;
   cnpj: string;
 };

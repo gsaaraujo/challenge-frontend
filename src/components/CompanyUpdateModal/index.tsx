@@ -7,6 +7,7 @@ import { useSpring, animated } from 'react-spring';
 import { ReactComponent as Exit } from '../../assets/icons/x-circle.svg';
 
 import { useCompany } from '../../hooks/useCompany';
+import { Company } from '../../context/companyProvider';
 
 import { Spacer } from '../Spacer';
 import { ItemField } from '../ItemField';
@@ -24,7 +25,7 @@ import {
 } from './styles';
 
 type Props = {
-  companySelected: number;
+  companySelected: Company;
   handleModalShown: () => void;
 };
 
@@ -33,9 +34,9 @@ export const CompanyUpdateModal = ({
   handleModalShown,
 }: Props) => {
   const [warningMessage, setWarningMessage] = useState('');
-  const [companyName, setCompanyName] = useState('');
+  const [companyName, setCompanyName] = useState(companySelected.name);
   const [companyCNPJ, setCompanyCNPJ] = useState('');
-  const [companyCNPJMask, setCompanyCNPJMask] = useState('');
+  const [companyCNPJMask, setCompanyCNPJMask] = useState(companySelected.cnpj);
 
   const props = useSpring({ to: { opacity: 1 }, from: { opacity: 0 } });
 
@@ -74,7 +75,7 @@ export const CompanyUpdateModal = ({
 
       try {
         await handleUpdateCompany(
-          companySelected,
+          companySelected.id,
           companyName.trim(),
           companyCNPJ.trim(),
         );
@@ -111,6 +112,7 @@ export const CompanyUpdateModal = ({
             title='Nome'
             width='324px'
             handleOnChange={handleCompanyName}
+            value={companyName}
           />
           <Spacer height={15} />
           <ItemField
