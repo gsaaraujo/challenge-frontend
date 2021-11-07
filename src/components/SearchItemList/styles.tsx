@@ -1,7 +1,12 @@
 import styled from 'styled-components';
 import { AppColors } from '../../constants/app_colors';
 
-export const Container = styled.div`
+type ContainerProps = {
+  width?: string;
+};
+
+export const Container = styled.div<ContainerProps>`
+  width: ${props => props.width || '100%'};
   height: 60px;
 `;
 

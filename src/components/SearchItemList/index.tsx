@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 /* eslint-disable arrow-body-style */
 /* eslint-disable no-unused-vars */
 import React from 'react';
@@ -10,17 +11,19 @@ import { Container, Title, InputContent, InputText } from './styles';
 
 type Props = {
   title: string;
+  width?: string;
   placeholder: string;
   handleOnChange: (text: string) => void;
 };
 
 export const SearchItemList = ({
   title,
+  width,
   placeholder,
   handleOnChange,
 }: Props) => {
   return (
-    <Container>
+    <Container width={width}>
       <Title>{title}</Title>
       <Spacer height={10} />
 
