@@ -11,6 +11,7 @@ type Props = {
   value?: string;
   width?: string;
   maxLength?: number;
+  defaultValue?: string;
   // eslint-disable-next-line no-unused-vars
   handleOnChange?: (text: string) => void;
   props?: any;
@@ -21,6 +22,7 @@ export const ItemField = ({
   value,
   maxLength = 40,
   width = '100%',
+  defaultValue = '',
   handleOnChange = () => {},
   props,
 }: Props) => {
@@ -30,6 +32,7 @@ export const ItemField = ({
       <Spacer height={5} />
       <InputField
         {...props}
+        defaultValue={defaultValue}
         value={value}
         maxLength={maxLength}
         onChange={text => handleOnChange(text.target.value)}

@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 
@@ -11,6 +12,9 @@ import { WarningMessage } from '../../components/WarningMessage';
 import { ClientDataFetchItemList } from '../../components/ClientDataFetchItemList';
 
 import { Container, Content, Section, SubSection, Title } from './styles';
+import { ClientDataUpdatedModal } from '../../components/ClientDataUpdateModal';
+import { Company } from '../../context/companyProvider';
+import { ClientData } from '../../context/clientDataProvider';
 
 // eslint-disable-next-line arrow-body-style
 export const SearchData = () => {
@@ -18,10 +22,19 @@ export const SearchData = () => {
   const [isUpdateModalShown, setIsUpdateModalShown] = useState(false);
   const [warningMessage, setWarningMessage] = useState('');
   const [searchText, setSearchText] = useState('');
+  const [itemSelected, setItemSelected] = useState<ClientData>(
+    {} as ClientData,
+  );
 
   const { clientData } = useClientData();
 
   const handleSearchText = (text: string) => setSearchText(text);
+
+  const handleUpdateModalShown = () =>
+    setIsUpdateModalShown(!isUpdateModalShown);
+
+  const handleClientDataSelected = (clientData: ClientData) =>
+    setItemSelected(clientData);
 
   return (
     <Container>
@@ -55,12 +68,18 @@ export const SearchData = () => {
             <ClientDataFetchItemList
               data={clientData}
               handleDeleteModalShown={() => {}}
-              handleUpdateModalShown={() => {}}
-              handleItemSelected={() => {}}
+              handleUpdateModalShown={handleUpdateModalShown}
+              handleItemSelected={handleClientDataSelected}
             />
           </SubSection>
         </Section>
       </Content>
+      {isUpdateModalShown && (
+        <ClientDataUpdatedModal
+          handleModalShown={handleUpdateModalShown}
+          clientDataSelected={itemSelected}
+        />
+      )}
     </Container>
   );
 };

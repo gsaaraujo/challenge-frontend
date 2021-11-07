@@ -18,6 +18,7 @@ type Syystem = {
 };
 
 export type ClientData = {
+  id: number;
   company: Company;
   client: Client;
   syystem: Syystem;

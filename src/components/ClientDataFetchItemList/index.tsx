@@ -25,7 +25,7 @@ type Props = {
   data: ClientData[] | null;
   handleDeleteModalShown: () => void;
   handleUpdateModalShown: () => void;
-  handleItemSelected: (id: number) => void;
+  handleItemSelected: (clientData: ClientData) => void;
 };
 
 // eslint-disable-next-line arrow-body-style
@@ -85,12 +85,12 @@ export const ClientDataFetchItemList = ({
               </Item>
               <Item>
                 <IconWrapper onClick={handleUpdateModalShown}>
-                  <EditIcon onClick={() => {}} />
+                  <EditIcon onClick={() => handleItemSelected(clientData)} />
                 </IconWrapper>
               </Item>
               <Item>
                 <IconWrapper onClick={handleDeleteModalShown}>
-                  <TrashIcon onClick={() => {}} />
+                  <TrashIcon onClick={() => handleItemSelected(clientData)} />
                 </IconWrapper>
               </Item>
             </Collection>
