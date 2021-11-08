@@ -1,3 +1,5 @@
+/* eslint-disable no-plusplus */
+/* eslint-disable no-shadow */
 /* eslint-disable prefer-template */
 /* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-use-before-define */
@@ -28,7 +30,7 @@ export type ClientData = {
 };
 
 type Data = {
-  clientData: ClientData[] | null;
+  clientData: [ClientData[]] | null;
   handleAddClientData: (data: ClientData) => Promise<void>;
   handleUpdateClientData: (
     id: number,
@@ -47,7 +49,7 @@ export const ClientDataContext = createContext<Data>({} as Data);
 
 export const ClientDataProvider = ({ children }: Props) => {
   // eslint-disable-next-line no-unused-vars
-  const [clientData, setClientData] = useState<ClientData[] | null>(null);
+  const [clientData, setClientData] = useState<[ClientData[]] | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -99,8 +101,17 @@ export const ClientDataProvider = ({ children }: Props) => {
 
       const response: any = await baseApi.get('/clientsData');
 
-      if (response.data) {
-        setClientData(response.data as ClientData[]);
+      const { length } = Object.keys(response.data);
+      const newArray = [];
+
+      for (let x = 1; x <= length; x++) {
+        newArray.push(response.data[String(x)]);
+      }
+
+      newArray.forEach((data: any, index: any) => console.log(index));
+
+      if (newArray) {
+        setClientData(newArray as [ClientData[]]);
       }
     } catch (error) {
       // eslint-disable-next-line no-throw-literal

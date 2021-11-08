@@ -20,6 +20,7 @@ export const Content = styled.div`
 
 export const Section = styled.section`
   display: flex;
+  flex: 1;
 `;
 
 export const SubSection = styled.section`

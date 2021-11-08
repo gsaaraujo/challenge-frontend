@@ -52,12 +52,13 @@ export const SearchData = () => {
           <SubSection>
             <Spacer height={50} />
 
-            <Title size={14}>Empresas cadastradas</Title>
+            <Title size={14}>Dados cadastrados</Title>
             <Spacer height={30} />
 
             <SearchItemList
-              title='Procurar empresa'
-              placeholder='Procurar por nome'
+              title='Procurar dados'
+              width='400px'
+              placeholder='Procurar por nome do proprietário'
               handleOnChange={handleSearchText}
             />
             <Spacer height={10} />

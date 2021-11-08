@@ -61,7 +61,7 @@ export const RegisterData = () => {
       setWarningMessage('Todos os campos são necessários');
     } else {
       try {
-        data.company.name = itemSelected;
+        data.company = {...data.company, name: itemSelected};
         await handleAddClientData(data);
         handleSubmited(true);
       } catch (error) {
@@ -123,13 +123,13 @@ export const RegisterData = () => {
                   <Spacer height={15} />
                   <ItemField
                     title='Sistema'
-                    props={{ ...register('syystem', { required: true }) }}
+                    props={{ ...register('syystem.name', { required: true }) }}
                   />
                   <Spacer height={15} />
 
                   <ItemField
                     title='Proprietário do dado'
-                    props={register('client', { required: true })}
+                    props={register('client.name', { required: true })}
                   />
 
                   <Spacer height={15} />
