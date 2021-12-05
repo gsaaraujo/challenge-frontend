@@ -11,6 +11,7 @@ export type Company = {
 
 type Data = {
   company: Company[] | null;
+  isLoading: boolean;
   handleAddCompany: (name: string, cnpj: string) => Promise<void>;
   handleUpdateCompany: (
     id: number,
@@ -90,6 +91,8 @@ export const CompanyProvider = ({ children }: Props) => {
     } catch (error) {
       // eslint-disable-next-line no-throw-literal
       throw `${error}`;
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -97,6 +100,7 @@ export const CompanyProvider = ({ children }: Props) => {
     <CompanyContext.Provider
       value={{
         company,
+        isLoading,
         handleAddCompany,
         handleUpdateCompany,
         handleDeleteCompany,

@@ -2,6 +2,9 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 
+import ReactLoading from 'react-loading';
+import { AppColors } from '../../constants/app_colors';
+
 import { useClientData } from '../../hooks/useClientData';
 
 import { Navbar } from '../../components/Navbar';
@@ -26,7 +29,7 @@ export const SearchData = () => {
     {} as ClientData,
   );
 
-  const { clientData } = useClientData();
+  const { clientData, isLoading } = useClientData();
 
   const handleSearchText = (text: string) => setSearchText(text);
 
@@ -61,17 +64,27 @@ export const SearchData = () => {
               placeholder='Procurar por nome do proprietário'
               handleOnChange={handleSearchText}
             />
+
             <Spacer height={10} />
 
             <WarningMessage title={warningMessage} />
             <Spacer height={10} />
 
-            <ClientDataFetchItemList
-              data={clientData}
-              handleDeleteModalShown={() => {}}
-              handleUpdateModalShown={handleUpdateModalShown}
-              handleItemSelected={handleClientDataSelected}
-            />
+            {isLoading ? (
+              <ReactLoading
+                type='spinningBubbles'
+                color={AppColors.primary}
+                height='5%'
+                width='5%'
+              />
+            ) : (
+              <ClientDataFetchItemList
+                data={clientData}
+                handleDeleteModalShown={() => {}}
+                handleUpdateModalShown={handleUpdateModalShown}
+                handleItemSelected={handleClientDataSelected}
+              />
+            )}
           </SubSection>
         </Section>
       </Content>

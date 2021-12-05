@@ -31,6 +31,7 @@ export type ClientData = {
 
 type Data = {
   clientData: [ClientData[]] | null;
+  isLoading: boolean;
   handleAddClientData: (data: ClientData) => Promise<void>;
   handleUpdateClientData: (
     id: number,
@@ -98,7 +99,7 @@ export const ClientDataProvider = ({ children }: Props) => {
   const handleGetAllClientsData = async () => {
     try {
       setIsLoading(true);
-
+      await baseApi.get('/lgpdApi');
       const response: any = await baseApi.get('/clientsData');
 
       const { length } = Object.keys(response.data);
@@ -108,14 +109,14 @@ export const ClientDataProvider = ({ children }: Props) => {
         newArray.push(response.data[String(x)]);
       }
 
-      newArray.forEach((data: any, index: any) => console.log(index));
-
       if (newArray) {
         setClientData(newArray as [ClientData[]]);
       }
     } catch (error) {
       // eslint-disable-next-line no-throw-literal
       throw `${error}`;
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -123,6 +124,7 @@ export const ClientDataProvider = ({ children }: Props) => {
     <ClientDataContext.Provider
       value={{
         clientData,
+        isLoading,
         handleAddClientData,
         handleUpdateClientData,
         handleDeleteClientData,

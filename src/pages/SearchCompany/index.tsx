@@ -3,6 +3,9 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
 import React, { useEffect, useState } from 'react';
 
+import ReactLoading from 'react-loading';
+import { AppColors } from '../../constants/app_colors';
+
 import { useCompany } from '../../hooks/useCompany';
 import { Company } from '../../context/companyProvider';
 
@@ -27,7 +30,7 @@ export const SearchCompany = () => {
   const [searchText, setSearchText] = useState('');
   const [companyFiltered, setCompanyFiltered] = useState<Company[] | null>([]);
 
-  const { company, handleDeleteCompany } = useCompany();
+  const { company, isLoading, handleDeleteCompany } = useCompany();
 
   useEffect(() => {
     handleFilterText();
@@ -104,12 +107,21 @@ export const SearchCompany = () => {
             <WarningMessage title={warningMessage} />
             <Spacer height={10} />
 
-            <CompanyFetchItemList
-              data={companyFiltered}
-              handleDeleteModalShown={handleDeleteModalShown}
-              handleUpdateModalShown={handleUpdateModalShown}
-              handleItemSelected={handleCompanySelected}
-            />
+            {isLoading ? (
+              <ReactLoading
+                type='spinningBubbles'
+                color={AppColors.primary}
+                height='5%'
+                width='5%'
+              />
+            ) : (
+              <CompanyFetchItemList
+                data={companyFiltered}
+                handleDeleteModalShown={handleDeleteModalShown}
+                handleUpdateModalShown={handleUpdateModalShown}
+                handleItemSelected={handleCompanySelected}
+              />
+            )}
           </SubSection>
         </Section>
       </Content>
