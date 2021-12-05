@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
 /* eslint-disable no-shadow */
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import ReactLoading from 'react-loading';
 import { AppColors } from '../../constants/app_colors';
@@ -18,6 +19,7 @@ import { Container, Content, Section, SubSection, Title } from './styles';
 import { ClientDataUpdatedModal } from '../../components/ClientDataUpdateModal';
 import { Company } from '../../context/companyProvider';
 import { ClientData } from '../../context/clientDataProvider';
+import { ConfirmModal } from '../../components/ConfirmModal';
 
 // eslint-disable-next-line arrow-body-style
 export const SearchData = () => {
@@ -25,19 +27,53 @@ export const SearchData = () => {
   const [isUpdateModalShown, setIsUpdateModalShown] = useState(false);
   const [warningMessage, setWarningMessage] = useState('');
   const [searchText, setSearchText] = useState('');
+  const [dataFiltered, setDataFiltered] = useState<[ClientData[]] | null>([[]]);
   const [itemSelected, setItemSelected] = useState<ClientData>(
     {} as ClientData,
   );
 
-  const { clientData, isLoading } = useClientData();
+  const { clientData, isLoading, handleDeleteClientData } = useClientData();
+
+  useEffect(() => {
+    handleFilterText();
+  }, [clientData, searchText]);
+
+  const handleFilterText = () => {
+    if (clientData) {
+      let dataCopy = clientData;
+      const regex = new RegExp(searchText, 'i');
+
+      if (searchText !== null && dataCopy !== null) {
+        dataCopy = dataCopy.map(each =>
+          each.filter(c => c.client.name.match(regex)),
+        ) as [ClientData[]];
+
+        setDataFiltered(dataCopy);
+      } else {
+        setDataFiltered(clientData);
+      }
+    }
+  };
 
   const handleSearchText = (text: string) => setSearchText(text);
+
+  const handleDeleteModalShown = () =>
+    setIsDeleteModalShown(!isDeleteModalShown);
 
   const handleUpdateModalShown = () =>
     setIsUpdateModalShown(!isUpdateModalShown);
 
   const handleClientDataSelected = (clientData: ClientData) =>
     setItemSelected(clientData);
+
+  const handleOnConfirmDeleteModal = async () => {
+    try {
+      await handleDeleteClientData(itemSelected.id);
+      handleDeleteModalShown();
+    } catch (error) {
+      setWarningMessage('Não foi possivel deletar, tente novamente mais tarde');
+    }
+  };
 
   return (
     <Container>
@@ -79,8 +115,8 @@ export const SearchData = () => {
               />
             ) : (
               <ClientDataFetchItemList
-                data={clientData}
-                handleDeleteModalShown={() => {}}
+                data={dataFiltered}
+                handleDeleteModalShown={handleDeleteModalShown}
                 handleUpdateModalShown={handleUpdateModalShown}
                 handleItemSelected={handleClientDataSelected}
               />
@@ -88,6 +124,14 @@ export const SearchData = () => {
           </SubSection>
         </Section>
       </Content>
+
+      {isDeleteModalShown && (
+        <ConfirmModal
+          handleModalShown={handleDeleteModalShown}
+          handleOnConfirmModal={handleOnConfirmDeleteModal}
+        />
+      )}
+
       {isUpdateModalShown && (
         <ClientDataUpdatedModal
           handleModalShown={handleUpdateModalShown}

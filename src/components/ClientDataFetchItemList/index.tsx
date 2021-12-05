@@ -82,26 +82,28 @@ export const ClientDataFetchItemList = ({
           ) : (
             data.map((clientData: ClientData[], index: number) => (
               <>
-                <Collection
-                  key={index}
-                  onClick={() => handleDropDownSelected(String(index))}>
-                  <Item>
-                    <Title>{clientData[0].company.name}</Title>
-                  </Item>
-                  <Item>
-                    <Title>{clientData[0].syystem.name}</Title>
-                  </Item>
-                  <Item>
-                    <Title>{clientData[0].client.name}</Title>
-                  </Item>
+                {clientData.length !== 0 && (
+                  <Collection
+                    key={index}
+                    onClick={() => handleDropDownSelected(String(index))}>
+                    <Item>
+                      <Title>{clientData[0].company.name}</Title>
+                    </Item>
+                    <Item>
+                      <Title>{clientData[0].syystem.name}</Title>
+                    </Item>
+                    <Item>
+                      <Title>{clientData[0].client.name}</Title>
+                    </Item>
 
-                  <Item>
-                    <AnimationIcon
-                      isActivated={dropDownSelected === String(index)}>
-                      <ArrowDown />
-                    </AnimationIcon>
-                  </Item>
-                </Collection>
+                    <Item>
+                      <AnimationIcon
+                        isActivated={dropDownSelected === String(index)}>
+                        <ArrowDown />
+                      </AnimationIcon>
+                    </Item>
+                  </Collection>
+                )}
               </>
             ))
           )}

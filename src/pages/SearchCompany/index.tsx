@@ -111,8 +111,8 @@ export const SearchCompany = () => {
               <ReactLoading
                 type='spinningBubbles'
                 color={AppColors.primary}
-                height='5%'
-                width='5%'
+                height='15%'
+                width='15%'
               />
             ) : (
               <CompanyFetchItemList
